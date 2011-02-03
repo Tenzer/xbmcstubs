@@ -132,8 +132,8 @@ def setSetting(handle, id, value):
 def setContent(handle, content):
     """Sets the plugins content.
 
-    handle      : integer - handle the plugin was started with.
-    content     : string - content type (eg. movies)
+    handle: integer - handle the plugin was started with.
+    content: string - content type (eg. movies).
 
     Note:
         Possible values for content: files, songs, artists, albums, movies, tvshows, episodes, musicvideos
