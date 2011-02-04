@@ -1039,7 +1039,7 @@ class Dialog(object):
         """
         return bool
 
-    def browse(self, type, heading, shares, mask=None, useThumns=False, treatAsFolder=False, default=None):
+    def browse(self, type, heading, shares, mask=None, useThumbs=False, treatAsFolder=False, default=None):
         """Show a 'Browse' dialog.
 
         type: integer - the type of browse dialog.
