@@ -28,6 +28,7 @@ SORT_METHOD_STUDIO = None
 SORT_METHOD_STUDIO_IGNORE_THE = None
 SORT_METHOD_UNSORTED = None
 SORT_METHOD_BITRATE = None
+SORT_METHOD_LISTENERS = None
 
 def addDirectoryItem(handle, url, listitem, isFolder=False, totalItems=0):
     """Callback function to pass directory contents back to XBMC.

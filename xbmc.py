@@ -228,6 +228,17 @@ class Player(object):
         """Disable subtitles."""
         pass
 
+    def getAvailableAudioStreams(self):
+        """Get audio stream names."""
+        return list
+
+    def setAudioStream(self, stream):
+        """Set audio stream.
+
+        stream: int
+        """
+        pass
+
 
 class PlayList(object):
     def __init__(self, playlist):

@@ -42,6 +42,27 @@ class Window(object):
         """
         pass
 
+    def onClick(self, control):
+        """onClick method.
+
+        This method will recieve all click events that the main program will send to this window.
+        """
+        pass
+
+    def onFocus(self, control):
+        """onFocus method.
+
+        This method will recieve all focus events that the main program will send to this window.
+        """
+        pass
+
+    def onInit(self):
+        """onInit method.
+
+        This method will be called to initialize the window.
+        """
+        pass
+
     def doModal(self):
         """Display this window until close() is called."""
         pass
@@ -1039,7 +1060,8 @@ class Dialog(object):
         """
         return bool
 
-    def browse(self, type, heading, shares, mask=None, useThumbs=False, treatAsFolder=False, default=None):
+    def browse(self, type, heading, shares, mask=None, useThumbs=False, treatAsFolder=False, default=None,
+               enableMultiple=False):
         """Show a 'Browse' dialog.
 
         type: integer - the type of browse dialog.
@@ -1049,6 +1071,7 @@ class Dialog(object):
         useThumbs: boolean - if True autoswitch to Thumb view if files exist.
         treatAsFolder: boolean - if True playlists and archives act as folders.
         default: string - default path or file.
+        enableMultiple: boolean - if True multiple file selection is enabled.
 
         Types:
             0: ShowAndGetDirectory
@@ -1057,13 +1080,17 @@ class Dialog(object):
             3: ShowAndGetWriteableDirectory
 
         Note:
-            Returns filename and/or path as a string to the location of the highlighted item,
-            if user pressed 'Ok' or a masked item was selected.
-            Returns the default value if dialog was canceled.
+            If enableMultiple is False (default): returns filename and/or path as a string
+            to the location of the highlighted item, if user pressed 'Ok' or a masked item
+            was selected. Returns the default value if dialog was canceled.
+            If enableMultiple is True: returns tuple of marked filenames as a string,
+            if user pressed 'Ok' or a masked item was selected. Returns empty tuple if dialog was canceled.
+
+            If type is 0 or 3 the enableMultiple parameter is ignored.
 
         Example:
             dialog = xbmcgui.Dialog()
-            fn = dialog.browse(3, 'XBMC', 'files', '', False, False, 'special://masterprofile/script_data/XBMC Lyrics')
+            fn = dialog.browse(3, 'XBMC', 'files', '', False, False, False, 'special://masterprofile/script_data/XBMC Lyrics')
         """
         return str
 
