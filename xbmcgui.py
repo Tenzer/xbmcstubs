@@ -468,6 +468,8 @@ class ListItem(object):
             title: string (American Pie)
             rating: string (3) - single character between 0 and 5
             lyrics: string (On a dark desert highway...)
+            playcount: integer (2) - number of times this item has been played
+            lastplayed: string (%Y-%m-%d %h:%m:%s = 2009-04-05 23:16:04)
 
         Picture Values:
             title: string (In the last summer-1)
