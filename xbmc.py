@@ -320,10 +320,6 @@ class InfoTagMusic(object):
         """Returns a string."""
         return str
 
-    def getAlbumArtist(self):
-        """Returns a string."""
-        return str
-
     def getAlbum(self):
         """Returns a string."""
         return str
@@ -344,31 +340,7 @@ class InfoTagMusic(object):
         """Returns an integer."""
         return int
 
-    def getTrackAndDisc(self):
-        """Returns an integer."""
-        return int
-
     def getReleaseDate(self):
-        """Returns a string."""
-        return str
-
-    def getListeners(self):
-        """Returns an integer."""
-        return int
-
-    def getPlayCount(self):
-        """Returns an integer."""
-        return int
-
-    def getLastPlayed(self):
-        """Returns a string."""
-        return str
-
-    def getComment(self):
-        """Returns a string."""
-        return str
-
-    def getLyrics(self):
         """Returns a string."""
         return str
 
@@ -433,14 +405,6 @@ class InfoTagVideo(object):
     def getRating(self):
         """Returns a float."""
         return float
-
-    def getPlayCount(self):
-        """Returns an integer."""
-        return int
-
-    def getLastPlayed(self):
-        """Returns a string."""
-        return str
 
 
 PLAYLIST_MUSIC = None
