@@ -799,3 +799,13 @@ def skinHasImage(image):
         exists = xbmc.skinHasImage('ButtonFocusedTexture.png')
     """
     return bool
+
+def subHashAndFileSize(file):
+    """Returns tuple with subtitle hash and size.
+
+    file: string - file to calculate hash and size for
+
+    Example:
+        size,hash = xbmc.subHashAndFileSize(file)
+    """
+    return tuple
