@@ -464,6 +464,7 @@ class ListItem(object):
             plot: string (Long Description)
             plotoutline: string (Short Description)
             title: string (Big Fan)
+            originaltitle: string (Big Fan)
             duration: string (3:18)
             studio: string (Warner Bros.)
             tagline: string (An awesome movie) - short description of movie

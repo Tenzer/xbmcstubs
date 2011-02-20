@@ -417,6 +417,10 @@ class InfoTagVideo(object):
         """Returns a string."""
         return str
 
+    def getOriginalTitle(self):
+        """Returns a string."""
+        return str
+
     def getVotes(self):
         """Returns a string."""
         return str
@@ -440,6 +444,14 @@ class InfoTagVideo(object):
     def getYear(self):
         """Returns an integer."""
         return int
+
+    def getPremiered(self):
+        """Returns a string."""
+        return str
+
+    def getFirstAired(self):
+        """Returns a string."""
+        return str
 
     def getRating(self):
         """Returns a float."""
