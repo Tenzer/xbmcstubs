@@ -273,7 +273,7 @@ class PlayList(object):
 
         Clear current playlist and copy items from the file to this Playlist filename can be like .pls or .m3u ...
 
-        Returns False if unable to load playlist.
+        Returns False if unable to load playlist, True otherwise.
         """
         return bool
 
