@@ -27,3 +27,12 @@ class xbmcvfs(object):
         Example:
             success = xbmcvfs.rename(file,newFileName)"""
         return bool
+
+    def exists(self, path):
+        """Checks for a file or folder existance, mimics Pythons os.path.exists()
+
+        path: string - file or folder
+
+        Example:
+            success = xbmcvfs.exists(path)"""
+        return bool
