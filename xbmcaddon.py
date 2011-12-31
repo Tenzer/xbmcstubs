@@ -3,7 +3,7 @@ class Addon(object):
     def __init__(self, id = None):
         """Creates a new Addon class.
 
-        id: string - id of the addon (autodetected in XBMC Eden)
+        id: string - id of the addon (autodetected in XBMC Eden).
 
         Example:
             self.Addon = xbmcaddon.Addon(id='script.recentlyadded')

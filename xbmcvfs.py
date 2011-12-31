@@ -34,22 +34,20 @@ def rename(file, newFileName):
 def mkdir(path):
     """Create a folder.
 
-    path: folder
+    path: string - folder
 
     Example:
-        success = xbmcfvs.mkdir(path)
-    """
+        success = xbmcfvs.mkdir(path)"""
     return bool
 
 #noinspection PyUnusedLocal
 def rmdir(path):
     """Remove a folder.
 
-    path: folder
+    path: string - folder
 
     Example:
-        success = xbmcfvs.rmdir(path)
-    """
+        success = xbmcfvs.rmdir(path)"""
     return bool
 
 #noinspection PyUnusedLocal
