@@ -1,38 +1,63 @@
-class xbmcvfs(object):
-    def copy(self, source, destination):
-        """Copy file to destination, returns true/false.
+#noinspection PyUnusedLocal
+def copy(source, destination):
+    """Copy file to destination, returns true/false.
 
-        source: string - file to copy.
-        destination: string - destination file
+    source: string - file to copy.
+    destination: string - destination file
 
-        Example:
-            success = xbmcvfs.copy(source, destination)"""
-        return bool
+    Example:
+        success = xbmcvfs.copy(source, destination)"""
+    return bool
 
-    def delete(self, file):
-        """Deletes a file.
+#noinspection PyUnusedLocal
+def delete(file):
+    """Deletes a file.
 
-        file: string - file to delete
+    file: string - file to delete
 
-        Example:
-            xbmcvfs.delete(file)"""
-        pass
+    Example:
+        xbmcvfs.delete(file)"""
+    pass
 
-    def rename(self, file, newFileName):
-        """Renames a file, returns true/false.
+#noinspection PyUnusedLocal
+def rename(file, newFileName):
+    """Renames a file, returns true/false.
 
-        file: string - file to rename
-        newFileName: string - new filename, including the full path
+    file: string - file to rename
+    newFileName: string - new filename, including the full path
 
-        Example:
-            success = xbmcvfs.rename(file,newFileName)"""
-        return bool
+    Example:
+        success = xbmcvfs.rename(file,newFileName)"""
+    return bool
 
-    def exists(self, path):
-        """Checks for a file or folder existance, mimics Pythons os.path.exists()
+#noinspection PyUnusedLocal
+def mkdir(path):
+    """Create a folder.
 
-        path: string - file or folder
+    path: folder
 
-        Example:
-            success = xbmcvfs.exists(path)"""
-        return bool
+    Example:
+        success = xbmcfvs.mkdir(path)
+    """
+    return bool
+
+#noinspection PyUnusedLocal
+def rmdir(path):
+    """Remove a folder.
+
+    path: folder
+
+    Example:
+        success = xbmcfvs.rmdir(path)
+    """
+    return bool
+
+#noinspection PyUnusedLocal
+def exists(path):
+    """Checks for a file or folder existance, mimics Pythons os.path.exists()
+
+    path: string - file or folder
+
+    Example:
+        success = xbmcvfs.exists(path)"""
+    return bool

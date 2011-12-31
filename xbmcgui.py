@@ -1,5 +1,6 @@
+#noinspection PyUnusedLocal
 class Window(object):
-    def __init__(self, windowId=-1):
+    def __new__(cls, windowId=-1):
         """Create a new Window to draw on.
 
         Specify an id to use an existing window.
@@ -123,7 +124,7 @@ class Window(object):
         """
         pass
 
-    def getFocus(self, Control):
+    def getFocus(self):
         """Returns the control which is focused.
 
         Raises:
@@ -132,7 +133,7 @@ class Window(object):
         """
         return object
 
-    def getFocusId(self, int):
+    def getFocusId(self):
         """Returns the id of the control which is focused.
 
         Raises:
@@ -249,9 +250,9 @@ class Window(object):
         """
         pass
 
-
-class WindowDialog(object):
-    def __init__(self, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
+#noinspection PyUnusedLocal
+class WindowDialog(Window):
+    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
         """Create a new WindowXMLDialog script.
 
         xmlFilename: string - the name of the xml file to look for.
@@ -267,11 +268,11 @@ class WindowDialog(object):
             ui.doModal()
             del ui
         """
-        pass
+        super(WindowDialog, cls).__new__()
 
-
-class WindowXML(object):
-    def __init__(self, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
+#noinspection PyUnusedLocal
+class WindowXML(Window):
+    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
         """Create a new WindowXML script.
 
         xmlFilename: string - the name of the xml file to look for.
@@ -287,7 +288,7 @@ class WindowXML(object):
             ui.doModal()
             del ui
         """
-        pass
+        super(WindowXML, cls).__init__()
 
     def removeItem(self, position):
         """Removes a specified item based on position, from the Window List.
@@ -348,8 +349,9 @@ class WindowXML(object):
         pass
 
 
-class WindowXMLDialog(object):
-    def __init__(self, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
+#noinspection PyUnusedLocal
+class WindowXMLDialog(WindowXML):
+    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
         """Create a new WindowXMLDialog script.
 
         xmlFilename: string - the name of the xml file to look for.
@@ -365,9 +367,10 @@ class WindowXMLDialog(object):
             ui.doModal()
             del ui
         """
-        pass
+        super(WindowXML, cls).__new__()
+    
 
-
+#noinspection PyUnusedLocal
 class ListItem(object):
     def __init__(self, label=None, label2=None, iconImage=None, thumbnailImage=None, path=None):
         """Creates a new ListItem.
@@ -555,6 +558,7 @@ class ListItem(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlLabel(object):
     def __init__(self, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
                  hasPath=None, angle=None):
@@ -592,6 +596,7 @@ class ControlLabel(object):
         return str
 
 
+#noinspection PyUnusedLocal
 class ControlFadeLabel(object):
     def __init__(self, x, y, width, height, font=None, textColor=None, alignment=None):
         """Control that scroll's lables.
@@ -624,6 +629,7 @@ class ControlFadeLabel(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlTextBox(object):
     def __init__(self, x, y, width, height, font=None, textColor=None):
         """ControlTextBox class.
@@ -662,6 +668,7 @@ class ControlTextBox(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlButton(object):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
@@ -725,6 +732,7 @@ class ControlButton(object):
         return unicode
 
 
+#noinspection PyUnusedLocal
 class ControlCheckMark(object):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, checkWidth=None,
                  checkHeight=None, alignment=None, font=None, textColor=None, disabledColor=None):
@@ -785,6 +793,7 @@ class ControlCheckMark(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlList(object):
     def __init__(self, x, y, width, height, font=None, textColor=None, buttonTexture=None, buttonFocusTexture=None,
                  selectedColor=None, imageWidth=None, imageHeight=None, itemTextXOffset=None, itemTextYOffset=None,
@@ -927,6 +936,7 @@ class ControlList(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlImage(object):
     def __init__(self, x, y, width, height, filename, colorKey=None, aspectRatio=None, colorDiffuse=None):
         """ControlImage class.
@@ -963,6 +973,7 @@ class ControlImage(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlProgress(object):
     def __init__(self, x, y, width, height, texturebg=None, textureleft=None, texturemid=None, textureright=None,
                  textureoverlay=None):
@@ -1001,6 +1012,7 @@ class ControlProgress(object):
         return float
 
 
+#noinspection PyUnusedLocal
 class ControlSlider(object):
     def __init__(self, x, y, width, height, textureback=None, texture=None, texturefocus=None):
         """ControlSlider class.
@@ -1030,6 +1042,7 @@ class ControlSlider(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class ControlGroup(object):
     def __init__(self):
         """ControlGroup class.
@@ -1045,6 +1058,7 @@ class ControlGroup(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class Dialog(object):
     def ok(self, heading, line1, line2=None, line3=None):
         """Show a dialog 'OK'.
@@ -1157,6 +1171,7 @@ class Dialog(object):
         return int
 
 
+#noinspection PyUnusedLocal
 class DialogProgress(object):
     def create(self, heading, line1=None, line2=None, line3=None):
         """Create and show a progress dialog.
@@ -1200,6 +1215,7 @@ class DialogProgress(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class Action(object):
     """Action class.
 
@@ -1227,6 +1243,7 @@ class Action(object):
         return float
 
 
+#noinspection PyUnusedLocal
 class ControlRadioButton(object):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, alignment=None, font=None, textColor=None, disabledColor=None, angle=None,

@@ -1,35 +1,40 @@
-SORT_METHOD_NONE = None
-SORT_METHOD_LABEL = None
-SORT_METHOD_LABEL_IGNORE_THE = None
-SORT_METHOD_DATE = None
-SORT_METHOD_SIZE = None
-SORT_METHOD_FILE = None
-SORT_METHOD_DRIVE_TYPE = None
-SORT_METHOD_TRACKNUM = None
-SORT_METHOD_DURATION = None
-SORT_METHOD_TITLE = None
-SORT_METHOD_TITLE_IGNORE_THE = None
-SORT_METHOD_ARTIST = None
-SORT_METHOD_ARTIST_IGNORE_THE = None
-SORT_METHOD_ALBUM = None
-SORT_METHOD_ALBUM_IGNORE_THE = None
-SORT_METHOD_GENRE = None
-SORT_METHOD_VIDEO_YEAR = None
-SORT_METHOD_VIDEO_RATING = None
-SORT_METHOD_PROGRAM_COUNT = None
-SORT_METHOD_PLAYLIST_ORDER = None
-SORT_METHOD_EPISODE = None
-SORT_METHOD_VIDEO_TITLE = None
-SORT_METHOD_PRODUCTIONCODE = None
-SORT_METHOD_SONG_RATING = None
-SORT_METHOD_MPAA_RATING = None
-SORT_METHOD_VIDEO_RUNTIME = None
-SORT_METHOD_STUDIO = None
-SORT_METHOD_STUDIO_IGNORE_THE = None
-SORT_METHOD_UNSORTED = None
-SORT_METHOD_BITRATE = None
-SORT_METHOD_LISTENERS = None
+SORT_METHOD_NONE = 0
+SORT_METHOD_LABEL = 1
+SORT_METHOD_LABEL_IGNORE_THE = 2
+SORT_METHOD_DATE = 3
+SORT_METHOD_SIZE = 4
+SORT_METHOD_FILE = 5
+SORT_METHOD_DRIVE_TYPE = 6
+SORT_METHOD_TRACKNUM = 7
+SORT_METHOD_DURATION = 8
+SORT_METHOD_TITLE = 9
+SORT_METHOD_TITLE_IGNORE_THE = 10
+SORT_METHOD_ARTIST = 11
+SORT_METHOD_ARTIST_IGNORE_THE = 12
+SORT_METHOD_ALBUM = 13
+SORT_METHOD_ALBUM_IGNORE_THE = 14
+SORT_METHOD_GENRE = 15
+SORT_METHOD_VIDEO_YEAR =16
+SORT_METHOD_VIDEO_RATING = 17
 
+SORT_METHOD_PROGRAM_COUNT = 20
+SORT_METHOD_PLAYLIST_ORDER = 21
+SORT_METHOD_EPISODE = 22
+SORT_METHOD_VIDEO_TITLE = 23
+
+SORT_METHOD_PRODUCTIONCODE = 26
+SORT_METHOD_SONG_RATING = 27
+SORT_METHOD_MPAA_RATING = 28
+SORT_METHOD_VIDEO_RUNTIME = 29
+SORT_METHOD_STUDIO = 30
+SORT_METHOD_STUDIO_IGNORE_THE = 31
+
+SORT_METHOD_LISTENERS = 36
+SORT_METHOD_UNSORTED = 37
+
+SORT_METHOD_BITRATE = 39
+
+#noinspection PyUnusedLocal
 def addDirectoryItem(handle, url, listitem, isFolder=False, totalItems=0):
     """Callback function to pass directory contents back to XBMC.
 
@@ -47,6 +52,7 @@ def addDirectoryItem(handle, url, listitem, isFolder=False, totalItems=0):
     """
     return bool
 
+#noinspection PyUnusedLocal
 def addDirectoryItems(handle, items, totalItems=0):
     """Callback function to pass directory contents back to XBMC as a list.
 
@@ -66,6 +72,7 @@ def addDirectoryItems(handle, items, totalItems=0):
     """
     return bool
 
+#noinspection PyUnusedLocal
 def endOfDirectory(handle, succeeded=True, updateListing=False, cacheToDisc=True):
     """Callback function to tell XBMC that the end of the directory listing in a virtualPythonFolder module is reached.
 
@@ -79,6 +86,7 @@ def endOfDirectory(handle, succeeded=True, updateListing=False, cacheToDisc=True
     """
     pass
 
+#noinspection PyUnusedLocal
 def setResolvedUrl(handle, succeeded, listitem):
     """Callback function to tell XBMC that the file plugin has been resolved to a url
 
@@ -91,6 +99,7 @@ def setResolvedUrl(handle, succeeded, listitem):
     """
     pass
 
+#noinspection PyUnusedLocal
 def addSortMethod(handle, sortMethod, label2="%D"):
     """Adds a sorting method for the media list.
 
@@ -107,6 +116,7 @@ def addSortMethod(handle, sortMethod, label2="%D"):
     """
     pass
 
+#noinspection PyUnusedLocal
 def getSetting(handle, id):
     """Returns the value of a setting as a string.
 
@@ -118,6 +128,7 @@ def getSetting(handle, id):
     """
     return str
 
+#noinspection PyUnusedLocal
 def setSetting(handle, id, value):
     """Sets a plugin setting for the current running plugin.
 
@@ -130,6 +141,7 @@ def setSetting(handle, id, value):
     """
     pass
 
+#noinspection PyUnusedLocal
 def setContent(handle, content):
     """Sets the plugins content.
 
@@ -144,6 +156,7 @@ def setContent(handle, content):
     """
     pass
 
+#noinspection PyUnusedLocal
 def setPluginCategory(handle, category):
     """Sets the plugins name for skins to display.
 
@@ -155,6 +168,7 @@ def setPluginCategory(handle, category):
     """
     pass
 
+#noinspection PyUnusedLocal
 def setPluginFanart(handle, image=None, color1=None, color2=None, color3=None):
     """Sets the plugins fanart and color for skins to display.
 
@@ -169,6 +183,7 @@ def setPluginFanart(handle, image=None, color1=None, color2=None, color3=None):
     """
     pass
 
+#noinspection PyUnusedLocal
 def setProperty(handle, key, value):
     """Sets a container property for this plugin.
 
