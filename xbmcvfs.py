@@ -1,3 +1,4 @@
+#noinspection PyUnusedLocal
 def copy(source, destination):
     """Copy file to destination, returns true/false.
 
@@ -8,6 +9,7 @@ def copy(source, destination):
         success = xbmcvfs.copy(source, destination)"""
     return bool
 
+#noinspection PyUnusedLocal
 def delete(file):
     """Deletes a file.
 
@@ -17,6 +19,7 @@ def delete(file):
         xbmcvfs.delete(file)"""
     pass
 
+#noinspection PyUnusedLocal
 def rename(file, newFileName):
     """Renames a file, returns true/false.
 
@@ -27,6 +30,7 @@ def rename(file, newFileName):
         success = xbmcvfs.rename(file,newFileName)"""
     return bool
 
+#noinspection PyUnusedLocal
 def mkdir(path):
     """Create a folder.
 
@@ -37,6 +41,7 @@ def mkdir(path):
     """
     return bool
 
+#noinspection PyUnusedLocal
 def rmdir(path):
     """Remove a folder.
 
@@ -47,6 +52,7 @@ def rmdir(path):
     """
     return bool
 
+#noinspection PyUnusedLocal
 def exists(path):
     """Checks for a file or folder existance, mimics Pythons os.path.exists()
 

@@ -1,3 +1,4 @@
+#noinspection PyUnusedLocal
 class Keyboard(object):
     def __init__(self, default=None, heading=None, hidden=False):
         """Creates a new Keyboard object with default text heading and hidden input flag if supplied.
@@ -74,6 +75,7 @@ class Keyboard(object):
         return bool
 
 
+#noinspection PyUnusedLocal
 class Player(object):
     def __init__(self, core=None):
         """Creates a new Player with as default the xbmc music playlist.
@@ -240,6 +242,7 @@ class Player(object):
         pass
 
 
+#noinspection PyUnusedLocal
 class PlayList(object):
     def __init__(self, playlist):
         """Retrieve a reference from a valid xbmc playlist
@@ -302,6 +305,7 @@ class PlayList(object):
         return int
 
 
+#noinspection PyUnusedLocal
 class PlayListItem(object):
     """Creates a new PlaylistItem which can be added to a PlayList."""
 
@@ -318,6 +322,7 @@ class PlayListItem(object):
         return str
 
 
+#noinspection PyUnusedLocal
 class InfoTagMusic(object):
     def getURL(self):
         """Returns a string."""
@@ -384,6 +389,7 @@ class InfoTagMusic(object):
         return str
 
 
+#noinspection PyUnusedLocal
 class InfoTagVideo(object):
     def getDirector(self):
         """Returns a string."""
@@ -466,29 +472,37 @@ class InfoTagVideo(object):
         return str
 
 
-PLAYLIST_MUSIC = None
-PLAYLIST_VIDEO = None
+PLAYLIST_MUSIC = 0
+PLAYLIST_VIDEO = 1
 
-PLAYER_CORE_AUTO = None
-PLAYER_CORE_DVDPLAYER = None
-PLAYER_CORE_MPLAYER = None
-PLAYER_CORE_PAPLAYER = None
+PLAYER_CORE_AUTO = 0
+PLAYER_CORE_DVDPLAYER = 1
+PLAYER_CORE_MPLAYER = 2
+PLAYER_CORE_PAPLAYER = 3
 
-TRAY_OPEN = None
-DRIVE_NOT_READY = None
-TRAY_CLOSED_NO_MEDIA = None
-TRAY_CLOSED_MEDIA_PRESENT = None
+TRAY_OPEN = 16
+DRIVE_NOT_READY = 1
+TRAY_CLOSED_NO_MEDIA = 64
+TRAY_CLOSED_MEDIA_PRESENT = 96
 
-LOGDEBUG = None
-LOGINFO = None
-LOGNOTICE = None
-LOGWARNING = None
-LOGERROR = None
-LOGSEVERE = None
-LOGFATAL = None
-LOGNONE = None
+LOGDEBUG = 0
+LOGINFO = 1
+LOGNOTICE = 2
+LOGWARNING = 3
+LOGERROR = 4
+LOGSEVERE = 5
+LOGFATAL = 6
+LOGNONE = 7
+
+CAPTURE_STATE_WORKING = 0
+CAPTURE_STATE_DONE = 3
+CAPTURE_STATE_FAILED = 4
+
+CAPTURE_FLAG_CONTINUOUS = 1
+CAPTURE_FLAG_IMMEDIATELY = 2
 
 
+#noinspection PyUnusedLocal
 def output(msg, level=LOGNOTICE):
     """Write a string to XBMC's log file and the debug window.
 
@@ -507,6 +521,7 @@ def output(msg, level=LOGNOTICE):
     """
     pass
 
+#noinspection PyUnusedLocal
 def log(msg, level=LOGNOTICE):
     """Write a string to XBMC's log file.
 
@@ -537,6 +552,7 @@ def restart():
     """Reboot the xbox."""
     pass
 
+#noinspection PyUnusedLocal
 def executescript(script):
     """Execute a python script.
 
@@ -547,6 +563,7 @@ def executescript(script):
     """
     pass
 
+#noinspection PyUnusedLocal
 def executebuiltin(function):
     """Execute a built in XBMC function.
 
@@ -559,6 +576,7 @@ def executebuiltin(function):
     """
     pass
 
+#noinspection PyUnusedLocal
 def executehttpapi(httpcommand):
     """Execute an HTTP API command.
 
@@ -571,6 +589,7 @@ def executehttpapi(httpcommand):
     """
     return str
 
+#noinspection PyUnusedLocal
 def executeJSONRPC(jsonrpccommand):
     """Execute an JSONRPC command.
 
@@ -583,6 +602,7 @@ def executeJSONRPC(jsonrpccommand):
     """
     return str
 
+#noinspection PyUnusedLocal
 def sleep(time):
     """Sleeps for 'time' msec.
 
@@ -599,6 +619,7 @@ def sleep(time):
     """
     pass
 
+#noinspection PyUnusedLocal
 def getLocalizedString(id):
     """Returns a localized 'unicode string'.
 
@@ -643,6 +664,7 @@ def getFreeMem():
     """Returns the amount of free memory in MB as an integer."""
     return int
 
+#noinspection PyUnusedLocal
 def getInfoLabel(infotag):
     """Returns an InfoLabel as a string.
 
@@ -655,6 +677,7 @@ def getInfoLabel(infotag):
     """
     return str
 
+#noinspection PyUnusedLocal
 def getInfoImage(infotag):
     """Returns a filename including path to the InfoImage's thumbnail as a string.
 
@@ -667,6 +690,7 @@ def getInfoImage(infotag):
     """
     return str
 
+#noinspection PyUnusedLocal
 def playSFX(filename):
     """Plays a wav file by filename.
 
@@ -677,6 +701,7 @@ def playSFX(filename):
     """
     pass
 
+#noinspection PyUnusedLocal
 def enableNavSounds(yesNo):
     """Enables/Disables nav sounds.
 
@@ -687,6 +712,7 @@ def enableNavSounds(yesNo):
     """
     pass
 
+#noinspection PyUnusedLocal
 def getCondVisibility(condition):
     """Returns True (1) or False (0) as a bool.
 
@@ -707,6 +733,7 @@ def getGlobalIdleTime():
     """Returns the elapsed idle time in seconds as an integer."""
     return int
 
+#noinspection PyUnusedLocal
 def getCacheThumbName(path):
     """Returns a thumb cache filename.
 
@@ -717,6 +744,7 @@ def getCacheThumbName(path):
     """
     return str
 
+#noinspection PyUnusedLocal
 def makeLegalFilename(filename, fatX=True):
     """Returns a legal filename or path as a string.
 
@@ -731,6 +759,7 @@ def makeLegalFilename(filename, fatX=True):
     """
     return str
 
+#noinspection PyUnusedLocal
 def translatePath(path):
     """Returns the translated path.
 
@@ -746,6 +775,7 @@ def translatePath(path):
     """
     return str
 
+#noinspection PyUnusedLocal
 def getCleanMovieTitle(path, usefoldername=False):
     """Returns a clean movie title and year string if available.
 
@@ -757,6 +787,7 @@ def getCleanMovieTitle(path, usefoldername=False):
     """
     return str
 
+#noinspection PyUnusedLocal
 def validatePath(path):
     """Returns the validated path.
 
@@ -771,6 +802,7 @@ def validatePath(path):
     """
     return str
 
+#noinspection PyUnusedLocal
 def getRegion(id):
     """Returns your regions setting as a string for the specified id.
 
@@ -784,6 +816,7 @@ def getRegion(id):
     """
     return str
 
+#noinspection PyUnusedLocal
 def getSupportedMedia(media):
     """Returns the supported file types for the specific media as a string.
 
@@ -799,6 +832,7 @@ def getSupportedMedia(media):
     """
     return str
 
+#noinspection PyUnusedLocal
 def skinHasImage(image):
     """Returns True if the image file exists in the skin.
 
@@ -812,6 +846,7 @@ def skinHasImage(image):
     """
     return bool
 
+#noinspection PyUnusedLocal
 def subHashAndFileSize(file):
     """Returns tuple with subtitle hash and size.
 
