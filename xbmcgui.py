@@ -12,7 +12,7 @@ class Window(object):
         Deleting this window will activate the old window that was active
         and resets (not delete) all controls that are associated with this window.
         """
-        pass
+        super(Window, cls).__new__(cls)
 
     def show(self):
         """Show this window.
@@ -68,7 +68,7 @@ class Window(object):
         """Display this window until close() is called."""
         pass
 
-    def addControl(self, Control):
+    def addControl(self, control):
         """Add a Control to this window.
 
         Raises:
@@ -88,6 +88,9 @@ class Window(object):
             ControlRadioButton
             ControlProgress
         """
+        pass
+
+    def addControls(self, controls):
         pass
 
     def getControl(self, controlId):
@@ -142,7 +145,7 @@ class Window(object):
         """
         return long
 
-    def removeControl(self, Control):
+    def removeControl(self, control):
         """Removes the control from this window.
 
         Raises:
@@ -151,6 +154,9 @@ class Window(object):
 
         This will not delete the control. It is only removed from the window.
         """
+        pass
+
+    def removeControls(self, controls):
         pass
 
     def getHeight(self):
@@ -268,7 +274,7 @@ class WindowDialog(Window):
             ui.doModal()
             del ui
         """
-        super(WindowDialog, cls).__new__()
+        super(WindowDialog, cls).__new__(cls)
 
 #noinspection PyUnusedLocal
 class WindowXML(Window):
@@ -288,7 +294,7 @@ class WindowXML(Window):
             ui.doModal()
             del ui
         """
-        super(WindowXML, cls).__init__()
+        super(WindowXML, cls).__new__(cls)
 
     def removeItem(self, position):
         """Removes a specified item based on position, from the Window List.
@@ -367,7 +373,7 @@ class WindowXMLDialog(WindowXML):
             ui.doModal()
             del ui
         """
-        super(WindowXML, cls).__new__()
+        super(WindowXML, cls).__new__(cls)
     
 
 #noinspection PyUnusedLocal

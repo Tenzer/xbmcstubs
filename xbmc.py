@@ -1,3 +1,6 @@
+
+abortRequested = False
+
 #noinspection PyUnusedLocal
 class Keyboard(object):
     def __init__(self, default=None, heading=None, hidden=False):
@@ -254,6 +257,12 @@ class PlayList(object):
         Use PlayList[int position] or __getitem__(int position) to get a PlayListItem.
         """
         pass
+
+    def __getitem__(self, item):
+        return None
+
+    def __len__(self):
+        return 0
 
     def add(self, url, listitem=None, index=-1):
         """Adds a new file to the playlist.
