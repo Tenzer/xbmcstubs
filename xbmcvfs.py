@@ -1,3 +1,60 @@
+class File(object):
+    def __init__(self, filename, type = None):
+        """
+        'w' - opt open for write
+        example:
+         f = xbmcvfs.File(file, ['w'])
+        """
+        pass
+
+    def close(self):
+        """
+        example:
+         f = xbmcvfs.File(file)
+         f.close()
+        """
+        pass
+
+    def read(self, bytes = None):
+        """
+        bytes : how many bytes to read [opt]- if not set it will read the whole file
+        example:
+        f = xbmcvfs.File(file)
+        b = f.read()
+        f.close()
+        """
+        pass
+
+    def seek(self):
+        """
+        FilePosition : position in the file
+        Whence : where in a file to seek from[0 begining, 1 current , 2 end possition]
+        example:
+         f = xbmcvfs.File(file)
+         result = f.seek(8129, 0)
+         f.close()
+        """
+        pass
+
+    def size(self):
+        """
+        example:
+         f = xbmcvfs.File(file)
+         s = f.size()
+         f.close()
+        """
+        pass
+
+    def write(self, buffer):
+        """
+        buffer : buffer to write to file
+        example:
+         f = xbmcvfs.File(file, 'w', True)
+         result = f.write(buffer)
+         f.close()
+        """
+        pass
+
 #noinspection PyUnusedLocal
 def copy(source, destination):
     """Copy file to destination, returns true/false.
@@ -61,3 +118,35 @@ def exists(path):
     Example:
         success = xbmcvfs.exists(path)"""
     return bool
+
+def listdir(path):
+    """
+    listdir(path) -- lists content of a folder.
+
+    path        : folder
+
+    example:
+     - dirs, files = xbmcvfs.listdir(path)
+    """
+    pass
+
+def mkdirs(path):
+    """Create folder(s) - it will create all folders in the path.
+
+    path: folder
+
+    Example:
+        success = xbmcfvs.mkdirs(path)
+    """
+    return bool
+
+def stat(file):
+    """
+    stat(path) -- get file or file system status.
+
+    path        : file or folder
+
+    example:
+    - mode,ino,dev,nlink,uid,gid,size,atime,mtime,ctime = xbmcvfs.stat(path)
+    """
+    return None

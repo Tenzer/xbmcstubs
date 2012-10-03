@@ -215,7 +215,7 @@ class Player(object):
         """
         pass
 
-    def setSubtitles(self):
+    def setSubtitles(self, path):
         """Set subtitle file and enable subtitles.
 
         path: string or unicode - Path to subtitle.
