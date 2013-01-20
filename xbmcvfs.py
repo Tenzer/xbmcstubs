@@ -43,7 +43,7 @@ class File(object):
          s = f.size()
          f.close()
         """
-        pass
+        return -1
 
     def write(self, buffer):
         """
@@ -140,13 +140,40 @@ def mkdirs(path):
     """
     return bool
 
-def stat(file):
-    """
-    stat(path) -- get file or file system status.
+class Stat(object):
+    def __init__(self, path):
+        """
+        Stat(path) -- get file or file system status.
 
-    path        : file or folder
+        path        : file or folder
 
-    example:
-    - mode,ino,dev,nlink,uid,gid,size,atime,mtime,ctime = xbmcvfs.stat(path)
-    """
-    return None
+        example:
+        - print xbmcvfs.Stat(path).st_mtime()
+        """
+
+    def st_mode(self):
+        return None
+
+    def st_ino(self):
+        return None
+
+    def st_nlink(self):
+        return None
+
+    def st_uid(self):
+        return None
+
+    def st_gid(self):
+        return None
+
+    def st_size(self):
+        return None
+
+    def st_atime(self):
+        return None
+
+    def st_mtime(self):
+        return None
+
+    def st_ctime(self):
+        return None
