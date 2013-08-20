@@ -49,6 +49,14 @@ class Window(object):
         This method will recieve all click events that the main program will send to this window.
         """
         pass
+    
+    def onControl(self, control):
+        """
+        onControl method.
+        This method will recieve all control events that the main program will send to this window.
+        'control' is an instance of a Control object.
+        """
+        pass
 
     def onFocus(self, control):
         """onFocus method.
