@@ -49,7 +49,7 @@ class Window(object):
         This method will recieve all click events that the main program will send to this window.
         """
         pass
-    
+
     def onControl(self, control):
         """
         onControl method.
@@ -189,6 +189,7 @@ class Window(object):
             7 - PAL 16:9   (720x576)
             8 - PAL60 4:3  (720x480)
             9 - PAL60 16:9 (720x480)
+        Note: this info is outdated. XBMC 12+ returns different vaulues.
         """
         return long
 
@@ -209,6 +210,7 @@ class Window(object):
             7 - PAL 16:9   (720x576)
             8 - PAL60 4:3  (720x480)
             9 - PAL60 16:9 (720x480)
+        Note: default is 720p (1280x720)
         """
         pass
 
@@ -382,7 +384,505 @@ class WindowXMLDialog(WindowXML):
             del ui
         """
         super(WindowXML, cls).__new__(cls)
-    
+
+#noinspection PyUnusedLocal
+class Control(object):
+    """
+    Parent for control classes. The problem here is that Python uses references to this class in a dynamic typing way.
+    For example, you will find this type of python code frequently:
+    window.getControl( 100 ).setLabel( "Stupid Dynamic Type")
+    Notice that the 'getControl' call returns a 'Control ' object.
+    In a dynamically typed language, the subsequent call to setLabel works if the specific type of control has the method.
+    The script writer is often in a position to know more than the code about the specificControl type
+    (in the example, that control id 100 is a 'ControlLabel ') where the C++ code is not.
+    SWIG doesn't support this type of dynamic typing. The 'Control ' wrapper that's returned will wrap aControlLabel
+    but will not have the 'setLabel' method on it. The only way to handle this is to add all possible subclass methods
+    to the parent class. This is ugly but the alternative is nearly as ugly.
+    It's particularly ugly here because the majority of the methods are unique to the particular subclass.
+    If anyone thinks they have a solution then let me know. The alternative would be to have a set of 'getContol'
+    methods, each one coresponding to a type so that the downcast can be done in the native code.
+    IOW rather than a simple 'getControl' there would be a 'getControlLabel', 'getControlRadioButton',
+    'getControlButton', etc.
+    TODO:This later solution should be implemented for future scripting languages
+    while the former will remain as deprecated functionality for Python.
+    """
+    def addItem(self):
+        pass
+
+    def addItemStream(self):
+        """
+        addItemStream() is only defined in subclasses ofControl .
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def addItems(self):
+        pass
+
+    def addLabel(self):
+        """
+        addLabel() is only defined in subclasses ofControl .
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def addListItem(self):
+        """
+        addListItem() is only defined in subclasses ofControl .
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def canAcceptMessages(self):
+        pass
+
+    def controlDown(self, control=None):
+        """
+        controlDown(control)--Set's the controls down navigation.
+        control : control object - control to navigate to on down.
+         *Note, You can also usesetNavigation() . Set to self to disable navigation.
+
+         Throws:
+             - TypeError, if one of the supplied arguments is not a control type.
+             - ReferenceError, if one of the controls is not added to a window.
+         example:
+             - self.button.controlDown(self.button1)
+         """
+         pass
+
+
+    def controlLeft(self, control=None):
+        """
+        controlLeft(control)--Set's the controls left navigation.
+
+         control : control object - control to navigate to on left.
+
+         *Note, You can also usesetNavigation() . Set to self to disable navigation.
+
+         Throws:
+             - TypeError, if one of the supplied arguments is not a control type.
+             - ReferenceError, if one of the controls is not added to a window.
+
+
+         example:
+             - self.button.controlLeft(self.button1)
+         """
+         pass
+
+    def controlRight(self, control=None):
+        """
+        controlRight(control)--Set's the controls right navigation.
+
+        control : control object - control to navigate to on right.
+
+        *Note, You can also usesetNavigation() . Set to self to disable navigation.
+
+        Throws:
+         - TypeError, if one of the supplied arguments is not a control type.
+         - ReferenceError, if one of the controls is not added to a window.
+
+        example:
+        - self.button.controlRight(self.button1)
+         """
+         pass
+
+    def controlUp(self, control=None):
+        """
+        controlUp(control)--Set's the controls up navigation.
+
+        control : control object - control to navigate to on up.
+
+        *Note, You can also usesetNavigation() . Set to self to disable navigation.
+
+        Throws:
+        - TypeError, if one of the supplied arguments is not a control type.
+        - ReferenceError, if one of the controls is not added to a window.
+        example:
+         - self.button.controlUp(self.button1)
+         """
+        pass
+
+    def getHeight(self):
+        """
+        getHeight() --Returns the control's current height as an integer.
+
+        example:
+        - height = self.button.getHeight()
+        """
+        return int
+
+    def getId(self):
+        """
+        getId() --Returns the control's current id as an integer.
+
+        example:
+        - id = self.button.getId()
+        """
+        return int
+
+    def getItemHeight(self):
+        """
+        getItemHeight() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        return int
+    def getLabel(self):
+        """
+        getLabel() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        return str
+
+    def getLabel2(self):
+        """
+        getLabel2() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        return str
+
+    def getListItem(self):
+        """
+        getListItem() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getPercent(self):
+        """
+        getPercent() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getPosition(self):
+        """
+        getPosition() --Returns the control's current position as a x,y integer tuple.
+
+        example:
+        - pos = self.button.getPosition()
+        """
+        return (int, int)
+
+    def getSelected(self):
+        """
+        getSelected() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getSelectedItem(self):
+        """
+        getSelectedItem() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getSelectedPosition(self):
+        """
+        getSelectedPosition() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getSpace(self):
+        """
+        getSpace() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getSpinControl(self):
+        """
+        getSpinControl() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def getText(self):
+        """
+        getText() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+    def getWidth(self):
+        """
+        getWidth() --Returns the control's current width as an integer.
+
+        example:
+        - width = self.button.getWidth()
+        """
+        return int
+    def getX(self):
+        """
+        Get X coordinate of a control as an integer.
+        """
+        return int
+
+    def getY(self):
+        """
+        Get Y coordinate of a control as an integer.
+        """
+        return int
+
+    def isSelected(self):
+        """
+        isSelected() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def removeItem(self):
+        """
+        removeItem() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def reset(self):
+        """
+        reset() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def scroll(self):
+        """
+        scroll() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def selectItem(self):
+        """
+        selectItem() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setAnimations(self, [(event='', attr='',)]):
+        """
+        setAnimations([(event, attr,)*])--Set's the control's animations.
+
+        [(event,attr,)*] : list - A list of tuples consisting of event and attributes pairs.
+        - event : string - The event to animate.
+        - attr : string - The whole attribute string separated by spaces.
+
+
+        Animating your skin -http://wiki.xbmc.org/?title=Animating_Your_Skin
+
+        example:
+        - self.button.setAnimations([('focus', 'effect=zoom end=90,247,220,56 time=0',)])
+        """
+        pass
+
+    def setColorDiffuse(self):
+        """
+        setColorDiffuse() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setDisabledColor(...)
+        """
+        setDisabledColor() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setEnableCondition(self, enable=''):
+        """
+        setEnableCondition(enable)--Set's the control's enabled condition. Allows XBMC to control the enabled status of the control.
+
+        enable : string - Enable condition.
+
+        List of Conditions -http://wiki.xbmc.org/index.php?title=List_of_Boolean_Conditions
+
+        example:
+        - self.button.setEnableCondition('System.InternetState')
+        """
+        pass
+
+    def setEnabled(self, enabled=True):
+        """
+        setEnabled(enabled)--Set's the control's enabled/disabled state.
+
+        enabled : bool - True=enabled / False=disabled.
+
+        example:
+        - self.button.setEnabled(False)
+        """
+        pass
+
+    def setHeight(self, height=1):
+        """
+        setHeight(height)--Set's the controls height.
+
+        height : integer - height of control.
+
+        example:
+        - self.image.setHeight(100)
+        """
+        pass
+
+    def setImage(self)
+        """
+        setImage() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setImageDimensions(self):
+        """"
+        setImageDimensions() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setItemHeight(self):
+        """
+        setItemHeight() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setLabel(self):
+        """
+        setLabel() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setNavigation(self, up=None, down=None, left=None, right=None):
+        """
+        setNavigation(up, down, left, right)--Set's the controls navigation.
+
+        up : control object - control to navigate to on up.
+        down : control object - control to navigate to on down.
+        left : control object - control to navigate to on left.
+        right : control object - control to navigate to on right.
+
+        *Note, Same ascontrolUp() ,controlDown() ,controlLeft() ,controlRight() . Set to self to disable navigation for that direction.
+
+        Throws:
+        - TypeError, if one of the supplied arguments is not a control type.
+        - ReferenceError, if one of the controls is not added to a window.
+
+
+        example:
+        - self.button.setNavigation(self.button1, self.button2, self.button3, self.button4)
+        """
+        pass
+
+    def setPageControlVisible(self):
+        """
+        setPageControlVisible() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setPercent(self):
+        """
+        setPercent() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setPosition(self, x=1, y=1):
+        """
+        setPosition(x, y)--Set's the controls position.
+
+        x : integer - x coordinate of control.
+        y : integer - y coordinate of control.
+
+        *Note, You may use negative integers. (e.g sliding a control into view)
+
+        example:
+        - self.button.setPosition(100, 250)
+        """
+        pass
+
+    def setRadioDimension(self):
+        """
+        setRadioDimension() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setSelected(self):
+        """
+        setSelected() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setSpace(self):
+        """
+        setSpace() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setStaticContent(self):
+        """
+        setStaticContent() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setText(self):
+        """
+        setText() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setTextures(self):
+        """
+        setTextures() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
+
+    def setVisible(self, visible):
+        """
+        setVisible(visible)--Set's the control's visible/hidden state.
+
+        visible : bool - True=visible / False=hidden.
+
+        example:
+        - self.button.setVisible(False)
+        """
+        pass
+
+    def setVisibleCondition(self, condition, allowHiddenFocus=False):
+        """
+        setVisibleCondition(visible[,allowHiddenFocus])--Set's the control's visible condition.
+        Allows XBMC to control the visible status of the control.
+
+        visible : string - Visible condition.
+        allowHiddenFocus : bool - True=gains focus even if hidden.
+
+        List of Conditions -http://wiki.xbmc.org/index.php?title=List_of_Boolean_Conditions
+
+        example:
+        - self.button.setVisibleCondition('[Control.IsVisible(41) + !Control.IsVisible(12)]', True)
+        """
+        pass
+
+    def setWidth(self, width):
+        """
+        setWidth(width)--Set's the controls width.
+
+        width : integer - width of control.
+
+        example:
+        - self.image.setWidth(100)
+        """
+        pass
+
+    def size(self):
+        """
+        size() is only defined in subclasses ofControl.
+        See the specific subclass for the appropriate documentation.
+        """
+        pass
 
 #noinspection PyUnusedLocal
 class ListItem(object):
@@ -396,7 +896,7 @@ class ListItem(object):
         path: string or unicode - listitem's path.
 
         Example:
-            listitem = xbmcgui.ListItem('Casino Royale', '[PG-13]', 'blank-poster.tbn', 'poster.tbn', path='f:\\movies\\casino_royale.mov')
+        listitem = xbmcgui.ListItem('Casino Royale', '[PG-13]', 'blank-poster.tbn', 'poster.tbn', path='f:\\movies\\casino_royale.mov')
         """
         pass
 
@@ -573,7 +1073,7 @@ class ListItem(object):
 
 
 #noinspection PyUnusedLocal
-class ControlLabel(object):
+class ControlLabel(Control):
     def __init__(self, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
                  hasPath=None, angle=None):
         """ControlLabel class.
@@ -611,7 +1111,7 @@ class ControlLabel(object):
 
 
 #noinspection PyUnusedLocal
-class ControlFadeLabel(object):
+class ControlFadeLabel(Control):
     def __init__(self, x, y, width, height, font=None, textColor=None, alignment=None):
         """Control that scroll's lables.
 
@@ -644,7 +1144,7 @@ class ControlFadeLabel(object):
 
 
 #noinspection PyUnusedLocal
-class ControlTextBox(object):
+class ControlTextBox(Control):
     def __init__(self, x, y, width, height, font=None, textColor=None):
         """ControlTextBox class.
 
@@ -683,7 +1183,7 @@ class ControlTextBox(object):
 
 
 #noinspection PyUnusedLocal
-class ControlButton(object):
+class ControlButton(Control):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
                  shadowColor=None, focusedColor=None):
@@ -747,7 +1247,7 @@ class ControlButton(object):
 
 
 #noinspection PyUnusedLocal
-class ControlCheckMark(object):
+class ControlCheckMark(Control):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, checkWidth=None,
                  checkHeight=None, alignment=None, font=None, textColor=None, disabledColor=None):
         """ControlCheckMark class.
@@ -808,7 +1308,7 @@ class ControlCheckMark(object):
 
 
 #noinspection PyUnusedLocal
-class ControlList(object):
+class ControlList(Control):
     def __init__(self, x, y, width, height, font=None, textColor=None, buttonTexture=None, buttonFocusTexture=None,
                  selectedColor=None, imageWidth=None, imageHeight=None, itemTextXOffset=None, itemTextYOffset=None,
                  itemHeight=None, space=None, alignmentY=None):
@@ -951,7 +1451,7 @@ class ControlList(object):
 
 
 #noinspection PyUnusedLocal
-class ControlImage(object):
+class ControlImage(Control):
     def __init__(self, x, y, width, height, filename, colorKey=None, aspectRatio=None, colorDiffuse=None):
         """ControlImage class.
 
@@ -988,7 +1488,7 @@ class ControlImage(object):
 
 
 #noinspection PyUnusedLocal
-class ControlProgress(object):
+class ControlProgress(Control):
     def __init__(self, x, y, width, height, texturebg=None, textureleft=None, texturemid=None, textureright=None,
                  textureoverlay=None):
         """ControlProgress class.
@@ -1027,7 +1527,7 @@ class ControlProgress(object):
 
 
 #noinspection PyUnusedLocal
-class ControlSlider(object):
+class ControlSlider(Control):
     def __init__(self, x, y, width, height, textureback=None, texture=None, texturefocus=None):
         """ControlSlider class.
 
@@ -1057,7 +1557,7 @@ class ControlSlider(object):
 
 
 #noinspection PyUnusedLocal
-class ControlGroup(object):
+class ControlGroup(Control):
     def __init__(self):
         """ControlGroup class.
 
