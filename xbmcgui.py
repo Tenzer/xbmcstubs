@@ -210,7 +210,10 @@ class Window(object):
             7 - PAL 16:9   (720x576)
             8 - PAL60 4:3  (720x480)
             9 - PAL60 16:9 (720x480)
+            
         Note: default is 720p (1280x720)
+        Note 2: this is not an actual display resulution. This is the resolution of the coordinate grid
+        all controls are placed on.
         """
         pass
 
