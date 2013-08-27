@@ -409,28 +409,7 @@ class Control(object):
     def addItem(self):
         pass
 
-    def addItemStream(self):
-        """
-        addItemStream() is only defined in subclasses ofControl .
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
     def addItems(self):
-        pass
-
-    def addLabel(self):
-        """
-        addLabel() is only defined in subclasses ofControl .
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def addListItem(self):
-        """
-        addListItem() is only defined in subclasses ofControl .
-        See the specific subclass for the appropriate documentation.
-        """
         pass
 
     def canAcceptMessages(self):
@@ -520,40 +499,6 @@ class Control(object):
         """
         return int
 
-    def getItemHeight(self):
-        """
-        getItemHeight() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        return int
-    def getLabel(self):
-        """
-        getLabel() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        return str
-
-    def getLabel2(self):
-        """
-        getLabel2() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        return str
-
-    def getListItem(self):
-        """
-        getListItem() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getPercent(self):
-        """
-        getPercent() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
     def getPosition(self):
         """
         getPosition() --Returns the control's current position as a x,y integer tuple.
@@ -563,47 +508,6 @@ class Control(object):
         """
         return (int, int)
 
-    def getSelected(self):
-        """
-        getSelected() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getSelectedItem(self):
-        """
-        getSelectedItem() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getSelectedPosition(self):
-        """
-        getSelectedPosition() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getSpace(self):
-        """
-        getSpace() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getSpinControl(self):
-        """
-        getSpinControl() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def getText(self):
-        """
-        getText() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
     def getWidth(self):
         """
         getWidth() --Returns the control's current width as an integer.
@@ -624,40 +528,7 @@ class Control(object):
         """
         return int
 
-    def isSelected(self):
-        """
-        isSelected() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def removeItem(self):
-        """
-        removeItem() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def reset(self):
-        """
-        reset() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def scroll(self):
-        """
-        scroll() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def selectItem(self):
-        """
-        selectItem() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setAnimations(self, [(event='', attr='',)]):
+    def setAnimations(self, [(event, attr,)]):
         """
         setAnimations([(event, attr,)*])--Set's the control's animations.
 
@@ -673,22 +544,10 @@ class Control(object):
         """
         pass
 
-    def setColorDiffuse(self):
+    def setEnableCondition(self, enable):
         """
-        setColorDiffuse() is only defined in subclasses ofControl . See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setDisabledColor(...)
-        """
-        setDisabledColor() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setEnableCondition(self, enable=''):
-        """
-        setEnableCondition(enable)--Set's the control's enabled condition. Allows XBMC to control the enabled status of the control.
+        setEnableCondition(enable)--Set's the control's enabled condition.
+        Allows XBMC to control the enabled status of the control.
 
         enable : string - Enable condition.
 
@@ -710,7 +569,7 @@ class Control(object):
         """
         pass
 
-    def setHeight(self, height=1):
+    def setHeight(self, height):
         """
         setHeight(height)--Set's the controls height.
 
@@ -718,34 +577,6 @@ class Control(object):
 
         example:
         - self.image.setHeight(100)
-        """
-        pass
-
-    def setImage(self)
-        """
-        setImage() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setImageDimensions(self):
-        """"
-        setImageDimensions() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setItemHeight(self):
-        """
-        setItemHeight() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setLabel(self):
-        """
-        setLabel() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
         """
         pass
 
@@ -770,21 +601,7 @@ class Control(object):
         """
         pass
 
-    def setPageControlVisible(self):
-        """
-        setPageControlVisible() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setPercent(self):
-        """
-        setPercent() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setPosition(self, x=1, y=1):
+    def setPosition(self, x, y):
         """
         setPosition(x, y)--Set's the controls position.
 
@@ -795,48 +612,6 @@ class Control(object):
 
         example:
         - self.button.setPosition(100, 250)
-        """
-        pass
-
-    def setRadioDimension(self):
-        """
-        setRadioDimension() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setSelected(self):
-        """
-        setSelected() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setSpace(self):
-        """
-        setSpace() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setStaticContent(self):
-        """
-        setStaticContent() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setText(self):
-        """
-        setText() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
-
-    def setTextures(self):
-        """
-        setTextures() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
         """
         pass
 
@@ -877,12 +652,6 @@ class Control(object):
         """
         pass
 
-    def size(self):
-        """
-        size() is only defined in subclasses ofControl.
-        See the specific subclass for the appropriate documentation.
-        """
-        pass
 
 #noinspection PyUnusedLocal
 class ListItem(object):
