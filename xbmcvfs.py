@@ -25,6 +25,21 @@ class File(object):
         """
         pass
 
+    def readBytes(self, numbytes):
+        """
+        readBytes(numbytes)
+
+        numbytes : how many bytes to read [opt]- if not set it will read the whole file
+
+        returns: bytearray
+
+        example:
+        f = xbmcvfs.File(file)
+        b = f.read()
+        f.close()
+        """
+        return bytearray
+
     def seek(self):
         """
         FilePosition : position in the file
@@ -43,7 +58,7 @@ class File(object):
          s = f.size()
          f.close()
         """
-        return -1
+        return int
 
     def write(self, buffer):
         """
@@ -95,6 +110,19 @@ def mkdir(path):
 
     Example:
         success = xbmcfvs.mkdir(path)
+    """
+    return bool
+
+#noinspection PyUnusedLocal
+def mkdirs(path):
+    """
+    mkdirs(path)--Create folder(s) - it will create all folders in the path.
+
+    path : folder
+
+    example:
+
+    - success = xbmcvfs.mkdirs(path)
     """
     return bool
 
