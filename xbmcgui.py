@@ -50,6 +50,9 @@ class Window(object):
         """
         pass
 
+    def onDoubleClick():
+        pass
+
     def onControl(self, control):
         """
         onControl method.
@@ -99,6 +102,14 @@ class Window(object):
         pass
 
     def addControls(self, controls):
+        """
+        addControls(self, List)--Add a list of Controls to this window.
+
+        *Throws:
+        - TypeError, if supplied argument is not ofList type, or a control is not ofControl type
+        - ReferenceError, if control is already used in another window
+        - RuntimeError, should not happen :-)
+        """
         pass
 
     def getControl(self, controlId):
@@ -210,7 +221,7 @@ class Window(object):
             7 - PAL 16:9   (720x576)
             8 - PAL60 4:3  (720x480)
             9 - PAL60 16:9 (720x480)
-            
+
         Note: default is 720p (1280x720)
         Note 2: this is not an actual display resulution. This is the resolution of the coordinate grid
         all controls are placed on.
@@ -271,23 +282,11 @@ class Window(object):
 
 #noinspection PyUnusedLocal
 class WindowDialog(Window):
-    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
-        """Create a new WindowXMLDialog script.
+    """
+    Create a new WindowDialog with transparent background unlike Window.
+    """
+    pass
 
-        xmlFilename: string - the name of the xml file to look for.
-        scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin. (eg os.getcwd())
-        defaultSkin: string - name of the folder in the skins path to look in for the xml.
-        defaultRes: string - default skins resolution.
-
-        Note:
-            Skin folder structure is eg(resources/skins/Default/720p).
-
-        Example:
-            ui = GUI('script-Lyrics-main.xml', os.getcwd(), 'LCARS', 'PAL')
-            ui.doModal()
-            del ui
-        """
-        super(WindowDialog, cls).__new__(cls)
 
 #noinspection PyUnusedLocal
 class WindowXML(Window):
@@ -295,7 +294,8 @@ class WindowXML(Window):
         """Create a new WindowXML script.
 
         xmlFilename: string - the name of the xml file to look for.
-        scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin. (eg os.getcwd())
+        scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin.
+        (eg os.getcwd())
         defaultSkin: string - name of the folder in the skins path to look in for the xml.
         defaultRes: string - default skins resolution.
 
@@ -1021,7 +1021,7 @@ class ControlButton(Control):
 #noinspection PyUnusedLocal
 class ControlCheckMark(Control):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, checkWidth=None,
-                 checkHeight=None, alignment=None, font=None, textColor=None, disabledColor=None):
+                 checkHeight=None, _alignment=None, font=None, textColor=None, disabledColor=None):
         """ControlCheckMark class.
 
         x: integer - x coordinate of control.
@@ -1034,7 +1034,7 @@ class ControlCheckMark(Control):
         noFocusTexture: string - filename for no focus texture.
         checkWidth: integer - width of checkmark.
         checkHeight: integer - height of checkmark.
-        alignment: integer - alignment of label - *Note, see xbfont.h
+        _alignment: integer - alignment of label - *Note, see xbfont.h
         font: string - font used for label text. (e.g. 'font13')
         textColor: hexstring - color of enabled checkmark's label. (e.g. '0xFFFFFFFF')
         disabledColor: hexstring - color of disabled checkmark's label. (e.g. '0xFFFF3300')
@@ -1343,6 +1343,75 @@ class ControlGroup(Control):
         """
         pass
 
+#noinspection PyUnusedLocal
+
+class ControlEdit(Control):
+
+    """
+   	ControlEdit class.
+
+    ControlEdit(x, y, width, height, label[, font, textColor,
+                                                    disabledColor, alignment, focusTexture, noFocusTexture])
+
+    x              : integer - x coordinate of control.
+    y              : integer - y coordinate of control.
+    width          : integer - width of control.
+    height         : integer - height of control.
+    label          : string or unicode - text string.
+    font           : [opt] string - font used for label text. (e.g. 'font13')
+    textColor      : [opt] hexstring - color of enabled label's label. (e.g. '0xFFFFFFFF')
+    disabledColor  : [opt] hexstring - color of disabled label's label. (e.g. '0xFFFF3300')
+    _alignment      : [opt] integer - alignment of label - *Note, see xbfont.h
+    focusTexture   : [opt] string - filename for focus texture.
+    noFocusTexture : [opt] string - filename for no focus texture.
+    isPassword     : [opt] bool - if true, mask text value.
+
+    *Note, You can use the above as keywords for arguments and skip certain optional arguments.
+    Once you use a keyword, all following arguments require the keyword.
+    After you create the control, you need to add it to the window with addControl().
+
+    example:
+    - self.edit = xbmcgui.ControlEdit(100, 250, 125, 75, 'Status')
+    """
+
+    def getLabel(self):
+        """
+        getLabel() -- Returns the text heading for this edit control.
+
+        example:
+        - label = self.edit.getLabel()
+        """
+        return unicode
+
+    def getText(self):
+        """
+        getText() -- Returns the text value for this edit control.
+
+        example:
+        - value = self.edit.getText()
+        """
+        return unicode
+
+    def setLabel(self, label):
+        """
+        setLabel(label) -- Set's text heading for this edit control.
+
+        label          : string or unicode - text string.
+        example:
+        - self.edit.setLabel('Status')
+        """
+        pass
+
+    def setText(self, value):
+        """
+        setText(value) -- Set's text value for this edit control.
+
+        value          : string or unicode - text string.
+        example:
+        - self.edit.setText('online')
+        """
+        pass
+
 
 #noinspection PyUnusedLocal
 class Dialog(object):
@@ -1501,6 +1570,62 @@ class DialogProgress(object):
         pass
 
 
+class DialogProgressBG(object):
+
+    """
+   	DialogProgressBG class
+    Displays a small progress dialog in the corner of the screen.
+    """
+
+    def close(self):
+        """
+        close() --Close the background progress dialog
+
+        example:
+        - pDialog.close()
+        """
+        pass
+
+    def create(heading, message=''):
+        """
+        create(heading[, message])--Create and show a background progress dialog.n
+
+        heading : string or unicode - dialog headingn
+        message : [opt] string or unicode - message textn
+
+        *Note, 'heading' is used for the dialog's id. Use a unique heading.n
+        Useupdate() to update heading, message and progressbar.n
+
+        example:
+        - pDialog = xbmcgui.DialogProgressBG()
+        - pDialog.create('Movie Trailers', 'Downloading Monsters Inc. ...')
+        """
+        pass
+
+    def isFinished(self):
+        """
+        isFinished() --Returns True if the background dialog is active.
+
+        example:
+        - if (pDialog.isFinished()): break
+        """
+        return bool
+
+    def update(percent, heading=None, message=None):
+        """
+        update([percent, heading, message])--Updates the background progress dialog.
+
+        percent : [opt] integer - percent complete. (0:100)
+        heading : [opt] string or unicode - dialog heading
+        message : [opt] string or unicode - message text
+
+        *Note, To clear heading or message, you must pass a blank character.
+
+        example:
+        - pDialog.update(25, message='Downloading Finding Nemo ...')
+        """
+        pass
+
 #noinspection PyUnusedLocal
 class Action(object):
     """Action class.
@@ -1530,10 +1655,10 @@ class Action(object):
 
 
 #noinspection PyUnusedLocal
-class ControlRadioButton(object):
+class ControlRadioButton(Control):
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
-                 textOffsetY=None, alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
-                 shadowColor=None, focusedColor=None, radiuFocusTexture=None, noRadioFocusTexture=None):
+                 textOffsetY=None, _alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
+                 shadowColor=None, focusedColor=None, TextureRadioFocus=None, TextureRadioNoFocus=None):
         """ControlRadioButton class.
 
         x: integer - x coordinate of control.
@@ -1545,15 +1670,15 @@ class ControlRadioButton(object):
         noFocusTexture: string - filename for no focus texture.
         textOffsetX: integer - x offset of label.
         textOffsetY: integer - y offset of label.
-        alignment: integer - alignment of label - *Note, see xbfont.h
+        _alignment: integer - alignment of label - *Note, see xbfont.h
         font: string - font used for label text. (e.g. 'font13')
         textColor: hexstring - color of enabled radio button's label. (e.g. '0xFFFFFFFF')
         disabledColor: hexstring - color of disabled radio button's label. (e.g. '0xFFFF3300')
         angle: integer - angle of control. (+ rotates CCW, - rotates CW)
         shadowColor: hexstring - color of radio button's label's shadow. (e.g. '0xFF000000')
         focusedColor: hexstring - color of focused radio button's label. (e.g. '0xFF00FFFF')
-        radioFocusTexture: string - filename for radio focus texture.
-        noRadioFocusTexture: string - filename for radio no focus texture.
+        TextureRadioFocu: string - filename for radio focus texture.
+        TextureRadioNoFocus: string - filename for radio no focus texture.
 
         Note:
             After you create the control, you need to add it to the window with addControl().
@@ -1603,33 +1728,70 @@ class ControlRadioButton(object):
         pass
 
 
-ICON_OVERLAY_NONE = None
-ICON_OVERLAY_RAR = None
-ICON_OVERLAY_ZIP = None
-ICON_OVERLAY_LOCKED = None
-ICON_OVERLAY_HAS_TRAINER = None
-ICON_OVERLAY_TRAINED = None
-ICON_OVERLAY_UNWATCHED = None
-ICON_OVERLAY_WATCHED = None
-ICON_OVERLAY_HD = None
-
 def lock():
-    """Lock the gui until xbmcgui.unlock() is called.
+    """
+    lock()--Lock the gui until xbmcgui.unlock() is called.
 
-    Note:
-        This will improve performance when doing a lot of gui manipulation at once.
-        The main program (xbmc itself) will freeze until xbmcgui.unlock() is called.
+    *Note, This will improve performance when doing a lot of gui manipulation at once.
+    The main program (xbmc itself) will freeze until xbmcgui.unlock() is called.
+
+    example:
+    - xbmcgui.lock()
     """
     pass
 
 def unlock():
-    """Unlock the gui from a lock() call."""
+    """
+    unlock()--Unlock the gui from a lock() call.
+
+    example:
+    - xbmcgui.unlock()
+    """
     pass
 
 def getCurrentWindowId():
-    """Returns the id for the current 'active' window as an integer."""
+    """
+    getCurrentWindowId()--Returns the id for the current 'active' window as an integer.
+
+    example:
+    - wid = xbmcgui.getCurrentWindowId()
+    """
     return long
 
 def getCurrentWindowDialogId():
-    """Returns the id for the current 'active' dialog as an integer."""
+    """
+    getCurrentWindowDialogId()--Returns the id for the current 'active' dialog as an integer.
+
+    example:
+    - wid = xbmcgui.getCurrentWindowDialogId()
+    """
     return long
+
+ALPHANUM_HIDE_INPUT = 2
+CONTROL_TEXT_OFFSET_X = 10
+CONTROL_TEXT_OFFSET_Y = 2
+ICON_OVERLAY_HAS_TRAINER = 4
+ICON_OVERLAY_HD = 8
+ICON_OVERLAY_LOCKED = 3
+ICON_OVERLAY_NONE = 0
+ICON_OVERLAY_RAR = 1
+ICON_OVERLAY_TRAINED = 5
+ICON_OVERLAY_UNWATCHED = 6
+ICON_OVERLAY_WATCHED = 7
+ICON_OVERLAY_ZIP = 2
+INPUT_ALPHANUM = 0
+INPUT_DATE = 2
+INPUT_IPADDRESS = 4
+INPUT_NUMERIC = 1
+INPUT_PASSWORD = 5
+INPUT_TIME = 3
+NOTIFICATION_ERROR = 'error'
+NOTIFICATION_INFO = 'info'
+NOTIFICATION_WARNING = 'warning'
+PASSWORD_VERIFY = 1
+
+__author__ = 'Team XBMC <http://xbmc.org>'
+__credits__ = 'Team XBMC'
+__date__ = 'Sun Aug 18 16:43:27 CEST 2013'
+__platform__ = 'ALL'
+__version__ = '2.0'
