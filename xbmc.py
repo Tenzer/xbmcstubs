@@ -92,19 +92,23 @@ class Player(object):
         pass
 
     def play(self, item=None, listitem=None, windowed=False):
-        """Play this item.
+        """
+        play([item, listitem, windowed]) -- Play this item.
 
-        item: string - filename, url or playlist.
-        listitem: listitem - used with setInfo() to set different infolabels.
-        windowed: bool - True=play video windowed, False=play users preference.
+        item           : [opt] string - filename, url or playlist.
+        listitem       : [opt] listitem - used with setInfo() to set different infolabels.
+        windowed       : [opt] bool - true=play video windowed, false=play users preference.(default)
 
-        Note:
-            If item is not given then the player will try to play the current item in the current playlist.
+        *Note, If item is not given then the Player will try to play the current item
+        in the current playlist.
 
-        Example:
-            listitem = xbmcgui.ListItem('Ironman')
-            listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
-            xbmc.Player(xbmc.PLAYER_CORE_MPLAYER).play(url, listitem, windowed)
+        You can use the above as keywords for arguments and skip certain optional arguments.
+        Once you use a keyword, all following arguments require the keyword.
+
+        example:
+        - listitem = xbmcgui.ListItem('Ironman')
+        - listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
+        - xbmc.Player( xbmc.PLAYER_CORE_MPLAYER ).play(url, listitem, windowed)
         """
         pass
 
