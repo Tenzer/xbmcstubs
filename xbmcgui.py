@@ -1344,7 +1344,6 @@ class ControlGroup(Control):
         pass
 
 #noinspection PyUnusedLocal
-
 class ControlEdit(Control):
 
     """
