@@ -1414,22 +1414,6 @@ class ControlEdit(Control):
 
 #noinspection PyUnusedLocal
 class Dialog(object):
-    def ok(self, heading, line1, line2=None, line3=None):
-        """Show a dialog 'OK'.
-
-        heading: string or unicode - dialog heading.
-        line1: string or unicode - line #1 text.
-        line2: string or unicode - line #2 text.
-        line3: string or unicode - line #3 text.
-
-        Note:
-            Returns True if 'Ok' was pressed, else False.
-
-        Example:
-            dialog = xbmcgui.Dialog()
-            ok = dialog.ok('XBMC', 'There was an error.')
-        """
-        return bool
 
     def browse(self, type, heading, shares, mask=None, useThumbs=False, treatAsFolder=False, default=None,
                enableMultiple=False):
@@ -1465,6 +1449,97 @@ class Dialog(object):
         """
         return str
 
+    def browseMultiple(self, type, heading, shares, mask=None, useThumbs=None, treatAsFolder=None, default=None):
+        """
+        browse(type, heading, shares[, mask, useThumbs, treatAsFolder, default])--Show a 'Browse' dialog.
+
+        type : integer - the type of browse dialog.
+        heading : string or unicode - dialog heading.
+        shares : string or unicode - from sources.xml. (i.e. 'myprograms')
+        mask : [opt] string or unicode - '|' separated file mask. (i.e. '.jpg|.png')
+        useThumbs : [opt] boolean - if True autoswitch to Thumb view if files exist (default=false).
+        treatAsFolder : [opt] boolean - if True playlists and archives act as folders (default=false).
+        default : [opt] string - default path or file.
+
+        Types:
+        - 1 : ShowAndGetFile
+        - 2 : ShowAndGetImage
+
+
+        *Note,
+        returns tuple of marked filenames as a string,"
+        if user pressed 'Ok' or a masked item was selected. Returns empty tuple if dialog was canceled.
+
+        example:
+
+        - dialog = xbmcgui.Dialog()
+        - fn = dialog.browseMultiple(2, 'XBMC', 'files', '', False, False, 'special://masterprofile/script_data/XBMC Lyrics')
+        """
+        return tuple
+
+    def browseSingle(self, type, heading, shares, mask=None, useThumbs=None, treatAsFolder=None, default=None):
+        """
+        browse(type, heading, shares[, mask, useThumbs, treatAsFolder, default])--Show a 'Browse' dialog.
+
+        type : integer - the type of browse dialog.
+        heading : string or unicode - dialog heading.
+        shares : string or unicode - from sources.xml. (i.e. 'myprograms')
+        mask : [opt] string or unicode - '|' separated file mask. (i.e. '.jpg|.png')
+        useThumbs : [opt] boolean - if True autoswitch to Thumb view if files exist (default=false).
+        treatAsFolder : [opt] boolean - if True playlists and archives act as folders (default=false).
+        default : [opt] string - default path or file.
+
+        Types:
+
+        - 0 : ShowAndGetDirectory
+        - 1 : ShowAndGetFile
+        - 2 : ShowAndGetImage
+        - 3 : ShowAndGetWriteableDirectory
+        *Note, Returns filename and/or path as a string to the location of the highlighted item,
+        if user pressed 'Ok' or a masked item was selected.
+        Returns the default value if dialog was canceled.
+
+        example:
+
+        - dialog = xbmcgui.Dialog()
+        - fn = dialog.browse(3, 'XBMC', 'files', '', False, False, 'special://masterprofile/script_data/XBMC Lyrics')
+        """
+        return str
+
+    def input(self, heading, default=None, type=None, option=None, autoclose=None):
+        """
+        input(heading[, default, type, option, autoclose])--Show an Input dialog.
+
+        heading : string - dialog heading.
+        default : [opt] string - default value. (default=empty string)
+        type : [opt] integer - the type of keyboard dialog. (default=xbmcgui.INPUT_ALPHANUM)
+        option : [opt] integer - option for the dialog. (see Options below)
+        autoclose : [opt] integer - milliseconds to autoclose dialog. (default=do not autoclose)
+
+        Types:
+        - xbmcgui.INPUT_ALPHANUM (standard keyboard)
+        - xbmcgui.INPUT_NUMERIC (format: #)
+        - xbmcgui.INPUT_DATE (format: DD/MM/YYYY)
+        - xbmcgui.INPUT_TIME (format: HH:MM)
+        - xbmcgui.INPUT_IPADDRESS (format: #.#.#.#)
+        - xbmcgui.INPUT_PASSWORD (return md5 hash of input, input is masked)
+
+
+        Options PasswordDialog :
+
+        - xbmcgui.PASSWORD_VERIFY (verifies an existing (default) md5 hashed password)
+        Options AlphanumDialog :
+
+        - xbmcgui.ALPHANUM_HIDE_INPUT (masks input)
+        *Note, Returns the entered data as a string.
+        Returns an empty string if dialog was canceled.
+
+        example:
+        - dialog = xbmcgui.Dialog()
+        - d = dialog.input('Enter secret code', type=xbmcgui.INPUT_ALPHANUM, option=xbmcgui.ALPHANUM_HIDE_INPUT)
+        """
+        return str
+
     def numeric(self, type, heading, default=None):
         """Show a 'Numeric' dialog.
 
@@ -1488,6 +1563,27 @@ class Dialog(object):
         """
         return str
 
+    def notification(self, heading, message, icon=None, time=None, sound=None):
+        """
+        notification(heading, message[, icon, time, sound])--Show a Notification alert.
+
+        heading : string - dialog heading.
+        message : string - dialog message.
+        icon : [opt] string - icon to use. (default xbmcgui.NOTIFICATION_INFO)
+        time : [opt] integer - time in milliseconds (default 5000)
+        sound : [opt] bool - play notification sound (default True)
+
+        Builtin Icons:
+
+        - xbmcgui.NOTIFICATION_INFO
+        - xbmcgui.NOTIFICATION_WARNING
+        - xbmcgui.NOTIFICATION_ERROR
+        example:
+        - dialog = xbmcgui.Dialog()
+        - dialog.notification('Movie Trailers', 'Finding Nemo download finished.', xbmcgui.NOTIFICATION_INFO, 5000)
+        """
+        pass
+
     def yesno(self, heading, line1, line2=None, line3=None, nolabel=None, yeslabel=None):
         """Show a dialog 'YES/NO'.
 
@@ -1504,6 +1600,23 @@ class Dialog(object):
         Example:
             dialog = xbmcgui.Dialog()
             ret = dialog.yesno('XBMC', 'Do you want to exit this script?')
+        """
+        return bool
+
+    def ok(self, heading, line1, line2=None, line3=None):
+        """Show a dialog 'OK'.
+
+        heading: string or unicode - dialog heading.
+        line1: string or unicode - line #1 text.
+        line2: string or unicode - line #2 text.
+        line3: string or unicode - line #3 text.
+
+        Note:
+            Returns True if 'Ok' was pressed, else False.
+
+        Example:
+            dialog = xbmcgui.Dialog()
+            ok = dialog.ok('XBMC', 'There was an error.')
         """
         return bool
 
