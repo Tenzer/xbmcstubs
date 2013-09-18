@@ -1415,13 +1415,13 @@ class ControlEdit(Control):
 #noinspection PyUnusedLocal
 class Dialog(object):
 
-    def browse(self, type, heading, shares, mask=None, useThumbs=False, treatAsFolder=False, default=None,
+    def browse(self, type, heading, s_shares, mask=None, useThumbs=False, treatAsFolder=False, default=None,
                enableMultiple=False):
         """Show a 'Browse' dialog.
 
         type: integer - the type of browse dialog.
         heading: string or unicode - dialog heading.
-        shares: string or unicode - from sources.xml. (i.e. 'myprograms')
+        s_shares: string or unicode - from sources.xml. (i.e. 'myprograms')
         mask: string or unicode - '|' separated file mask. (i.e. '.jpg|.png')
         useThumbs: boolean - if True autoswitch to Thumb view if files exist.
         treatAsFolder: boolean - if True playlists and archives act as folders.
