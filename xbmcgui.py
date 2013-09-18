@@ -1092,8 +1092,8 @@ class ControlList(Control):
         height: integer - height of control.
         font: string - font used for items label. (e.g. 'font13')
         textColor: hexstring - color of items label. (e.g. '0xFFFFFFFF')
-        buttonTexture: string - filename for focus texture.
-        buttonFocusTexture: string - filename for no focus texture.
+        buttonTexture: string - filename for no focus texture.
+        buttonFocusTexture: string - filename for focus texture.
         selectedColor: integer - x offset of label.
         _imageWidth: integer - width of items icon or thumbnail.
         _imageHeight: integer - height of items icon or thumbnail.
