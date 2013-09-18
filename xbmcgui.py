@@ -1082,8 +1082,8 @@ class ControlCheckMark(Control):
 #noinspection PyUnusedLocal
 class ControlList(Control):
     def __init__(self, x, y, width, height, font=None, textColor=None, buttonTexture=None, buttonFocusTexture=None,
-                 selectedColor=None, imageWidth=None, imageHeight=None, itemTextXOffset=None, itemTextYOffset=None,
-                 itemHeight=None, space=None, alignmentY=None):
+                 selectedColor=None, _imageWidth=None, _imageHeight=None, _itemTextXOffset=None, _itemTextYOffset=None,
+                 _itemHeight=None, _space=None, _alignmentY=None):
         """ControlList class.
 
         x: integer - x coordinate of control.
@@ -1095,13 +1095,13 @@ class ControlList(Control):
         buttonTexture: string - filename for focus texture.
         buttonFocusTexture: string - filename for no focus texture.
         selectedColor: integer - x offset of label.
-        imageWidth: integer - width of items icon or thumbnail.
-        imageHeight: integer - height of items icon or thumbnail.
-        itemTextXOffset: integer - x offset of items label.
-        itemTextYOffset: integer - y offset of items label.
-        itemHeight: integer - height of items.
-        space: integer - space between items.
-        alignmentY: integer - Y-axis alignment of items label - *Note, see xbfont.h
+        _imageWidth: integer - width of items icon or thumbnail.
+        _imageHeight: integer - height of items icon or thumbnail.
+        _itemTextXOffset: integer - x offset of items label.
+        _itemTextYOffset: integer - y offset of items label.
+        _itemHeight: integer - height of items.
+        _space: integer - space between items.
+        _alignmentY: integer - Y-axis alignment of items label - *Note, see xbfont.h
 
         Note:
             After you create the control, you need to add it to the window with addControl().
