@@ -1,16 +1,23 @@
+## @package xbmcgui
+#  Classes and functions to work with XBMC GUI.
+#
+
 #noinspection PyUnusedLocal
 class Window(object):
-    """Create a new Window to draw on.
+
+    """
+    Create a new Window to draw on.
 
     Specify an id to use an existing window.
 
     Raises:
-        ValueError: If supplied window Id does not exist.
-        Exception: If more then 200 windows are created.
+    ValueError: If supplied window Id does not exist.
+    Exception: If more then 200 windows are created.
 
     Deleting this window will activate the old window that was active
     and resets (not delete) all controls that are associated with this window.
     """
+
     def __new__(cls, windowId=-1):
         return super(Window, cls).__new__(cls)
 
@@ -422,34 +429,33 @@ class Control(object):
         """
         controlDown(control)--Set's the controls down navigation.
         control : control object - control to navigate to on down.
-         *Note, You can also usesetNavigation() . Set to self to disable navigation.
+        *Note, You can also usesetNavigation() . Set to self to disable navigation.
 
-         Throws:
-             - TypeError, if one of the supplied arguments is not a control type.
-             - ReferenceError, if one of the controls is not added to a window.
-         example:
-             - self.button.controlDown(self.button1)
-         """
-         pass
-
+        Throws:
+         - TypeError, if one of the supplied arguments is not a control type.
+         - ReferenceError, if one of the controls is not added to a window.
+        example:
+         - self.button.controlDown(self.button1)
+        """
+        pass
 
     def controlLeft(self, control=None):
         """
         controlLeft(control)--Set's the controls left navigation.
 
-         control : control object - control to navigate to on left.
+        control : control object - control to navigate to on left.
 
-         *Note, You can also usesetNavigation() . Set to self to disable navigation.
+        *Note, You can also usesetNavigation() . Set to self to disable navigation.
 
-         Throws:
-             - TypeError, if one of the supplied arguments is not a control type.
-             - ReferenceError, if one of the controls is not added to a window.
+        Throws:
+        - TypeError, if one of the supplied arguments is not a control type.
+        - ReferenceError, if one of the controls is not added to a window.
 
 
-         example:
-             - self.button.controlLeft(self.button1)
-         """
-         pass
+        example:
+        - self.button.controlLeft(self.button1)
+        """
+        pass
 
     def controlRight(self, control=None):
         """
@@ -460,13 +466,13 @@ class Control(object):
         *Note, You can also usesetNavigation() . Set to self to disable navigation.
 
         Throws:
-         - TypeError, if one of the supplied arguments is not a control type.
-         - ReferenceError, if one of the controls is not added to a window.
+        - TypeError, if one of the supplied arguments is not a control type.
+        - ReferenceError, if one of the controls is not added to a window.
 
         example:
         - self.button.controlRight(self.button1)
-         """
-         pass
+        """
+        pass
 
     def controlUp(self, control=None):
         """
@@ -531,7 +537,7 @@ class Control(object):
         """
         return int
 
-    def setAnimations(self, [(event, attr,)]):
+    def setAnimations(self, event_attr=[()]):
         """
         setAnimations([(event, attr,)*])--Set's the control's animations.
 
@@ -1372,7 +1378,7 @@ class ControlEdit(Control):
     - self.edit = xbmcgui.ControlEdit(100, 250, 125, 75, 'Status')
     """
     def __new__(cls, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
-                                                                            focusTexture=None, noFocusTexture=None)
+                                                                            focusTexture=None, noFocusTexture=None):
         return super(ControlEdit, cls).__new__(cls)
 
     def getLabel(self):

@@ -1,3 +1,7 @@
+## @package xbmcaddon
+#  A class to access addon properties.
+#
+
 #noinspection PyUnusedLocal
 class Addon(object):
     def __init__(self, id = None):

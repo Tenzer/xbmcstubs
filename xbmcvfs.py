@@ -1,3 +1,7 @@
+## @package xbmcvfs
+#  Classes and functions to work with files and folders.
+#
+
 class File(object):
     def __init__(self, filename, type = None):
         """
