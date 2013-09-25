@@ -616,6 +616,28 @@ class Monitor(object):
         """
         pass
 
+    def onDatabaseScanStarted(self, database):
+        """
+        onDatabaseScanStarted(database)--onDatabaseScanStarted method.
+
+        database : video/music as string
+
+        Will be called when database update starts and return video or music to indicate which DB is being updated
+        """
+        return str
+
+    def onNotification(self, sender, method, data):
+        """
+        onNotification(sender, method, data)--onNotification method.
+
+        sender : sender of the notification
+        method : name of the notification
+        data : JSON-encoded data of the notification
+
+        Will be called when XBMC receives or sends a notification
+        """
+        pass
+
 #noinspection PyUnusedLocal
 class RenderCapture(object):
 

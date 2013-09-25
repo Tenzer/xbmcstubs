@@ -1227,6 +1227,15 @@ class ControlList(Control):
         """
         pass
 
+    def removeItem(self, index):
+        """
+        Remove an item by index number.
+        index : integer - index number of the item to remove.
+        example:
+        my_list.removeItem(12)
+        """
+        pass
+
 
 #noinspection PyUnusedLocal
 class ControlImage(Control):
