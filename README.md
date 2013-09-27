@@ -5,4 +5,4 @@ These files may help you while developing a script or addon for [XBMC](http://xb
 
 Typically you can add a "source directory" to your development project, and then point it to the folder containing the xbmcstubs files, and you will then be able to "import" the classes as you normally would in Python.
 
-Auto-generated documentation from docstrings: http://romanvm.github.io/xbmcstubs
+Auto-generated XBMC Python API documentation from xbmcstubs docstrings: http://romanvm.github.io/xbmcstubs/docs
