@@ -5,21 +5,22 @@
 #noinspection PyUnusedLocal
 class Window(object):
 
-    """
-    Create a new Window to draw on.
+    """Create a new Window to draw on."""
 
-    Specify an id to use an existing window.
+    def __init__(self, windowId=-1):
+        """
+        Create a new Window to draw on.
 
-    Raises:
-    ValueError: If supplied window Id does not exist.
-    Exception: If more then 200 windows are created.
+        Specify an id to use an existing window.
 
-    Deleting this window will activate the old window that was active
-    and resets (not delete) all controls that are associated with this window.
-    """
+        Raises:
+        ValueError: If supplied window Id does not exist.
+        Exception: If more then 200 windows are created.
 
-    def __new__(cls, windowId=-1):
-        return super(Window, cls).__new__(cls)
+        Deleting this window will activate the old window that was active
+        and resets (not delete) all controls that are associated with this window.
+        """
+        pass
 
     def show(self):
         """Show this window.
@@ -290,31 +291,35 @@ class Window(object):
 #noinspection PyUnusedLocal
 class WindowDialog(Window):
     """
-    Create a new WindowDialog with transparent background unlike Window.
+    Create a new WindowDialog with transparent background, unlike Window.
+    WindowDialog always stays on top of XBMC UI.
     """
-    pass
+    def __init__(self):
+        pass
 
 
 #noinspection PyUnusedLocal
 class WindowXML(Window):
-    """Create a new WindowXML script.
 
-    xmlFilename: string - the name of the xml file to look for.
-    scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin.
-    (eg os.getcwd())
-    defaultSkin: string - name of the folder in the skins path to look in for the xml.
-    defaultRes: string - default skins resolution.
+    """Create a new WindowXML script."""
 
-    Note:
+    def __init__(self, xmlFilename, scriptPath, defaultSkin='Default', defaultRes='720p'):
+        """
+        xmlFilename: string - the name of the xml file to look for.
+        scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin.
+        (eg os.getcwd())
+        defaultSkin: string - name of the folder in the skins path to look in for the xml.
+        defaultRes: string - default skins resolution.
+
+        Note:
         Skin folder structure is eg(resources/skins/Default/720p).
 
-    Example:
+        Example:
         ui = GUI('script-Lyrics-main.xml', os.getcwd(), 'LCARS', 'PAL')
         ui.doModal()
         del ui
-    """
-    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
-        super(WindowXML, cls).__new__(cls)
+        """
+        pass
 
     def removeItem(self, position):
         """Removes a specified item based on position, from the Window List.
@@ -377,23 +382,25 @@ class WindowXML(Window):
 
 #noinspection PyUnusedLocal
 class WindowXMLDialog(WindowXML):
-    """Create a new WindowXMLDialog script.
 
-    xmlFilename: string - the name of the xml file to look for.
-    scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin. (eg os.getcwd())
-    defaultSkin: string - name of the folder in the skins path to look in for the xml.
-    defaultRes: string - default skins resolution.
+    """Create a new WindowXMLDialog script."""
 
-    Note:
+    def __init__(self, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
+        """
+        xmlFilename: string - the name of the xml file to look for.
+        scriptPath: string - path to script. used to fallback to if the xml doesn't exist in the current skin. (eg os.getcwd())
+        defaultSkin: string - name of the folder in the skins path to look in for the xml.
+        defaultRes: string - default skins resolution.
+
+        Note:
         Skin folder structure is eg(resources/skins/Default/720p).
 
-    Example:
+        Example:
         ui = GUI('script-Lyrics-main.xml', os.getcwd(), 'LCARS', 'PAL')
         ui.doModal()
         del ui
-    """
-    def __new__(cls, xmlFilename, scriptPath, defaultSkin="Default", defaultRes="720p"):
-        return super(WindowXML, cls).__new__(cls)
+        """
+        pass
 
 #noinspection PyUnusedLocal
 class Control(object):
@@ -664,19 +671,21 @@ class Control(object):
 
 #noinspection PyUnusedLocal
 class ListItem(object):
-    """Creates a new ListItem.
 
-    label: string or unicode - label1 text.
-    label2: string or unicode - label2 text.
-    iconImage: string - icon filename.
-    thumbnailImage: string - thumbnail filename.
-    path: string or unicode - listitem's path.
+    """Creates a new ListItem."""
 
-    Example:
-    listitem = xbmcgui.ListItem('Casino Royale', '[PG-13]', 'blank-poster.tbn', 'poster.tbn', path='f:\\movies\\casino_royale.mov')
-    """
-    def __new__(cls, label=None, label2=None, iconImage=None, thumbnailImage=None, path=None):
-        return super(ListItem, cls).__new__(cls)
+    def __init__(self, label='', label2='', iconImage=None, thumbnailImage=None, path=None):
+        """
+        label: string or unicode - label1 text.
+        label2: string or unicode - label2 text.
+        iconImage: string - icon filename.
+        thumbnailImage: string - thumbnail filename.
+        path: string or unicode - listitem's path.
+
+        Example:
+        listitem = xbmcgui.ListItem('Casino Royale', '[PG-13]', 'blank-poster.tbn', 'poster.tbn', path='f:\\movies\\casino_royale.mov')
+        """
+        pass
 
     def getLabel(self):
         """Returns the listitem label."""
@@ -852,29 +861,34 @@ class ListItem(object):
 
 #noinspection PyUnusedLocal
 class ControlLabel(Control):
-    """ControlLabel class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    label: string or unicode - text string.
-    font: string - font used for label text. (e.g. 'font13')
-    textColor: hexstring - color of enabled label's label. (e.g. '0xFFFFFFFF')
-    disabledColor: hexstring - color of disabled label's label. (e.g. '0xFFFF3300')
-    alignment: integer - alignment of label - *Note, see xbfont.h
-    hasPath: bool - True=stores a path / False=no path.
-    angle: integer - angle of control. (+ rotates CCW, - rotates CW)"
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.label = xbmcgui.ControlLabel(100, 250, 125, 75, 'Status', angle=45)
     """
-    def __new__(cls, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
+    ControlLabel class.
+    Creates a text label.
+    """
+
+    def __init__(self, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
                  hasPath=None, angle=None):
-        return super(ControlLabel, cls).__init__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        label: string or unicode - text string.
+        font: string - font used for label text. (e.g. 'font13')
+        textColor: hexstring - color of enabled label's label. (e.g. '0xFFFFFFFF')
+        disabledColor: hexstring - color of disabled label's label. (e.g. '0xFFFF3300')
+        alignment: integer - alignment of label - *Note, see xbfont.h
+        hasPath: bool - True=stores a path / False=no path.
+        angle: integer - angle of control. (+ rotates CCW, - rotates CW)"
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.label = xbmcgui.ControlLabel(100, 250, 125, 75, 'Status', angle=45)
+        """
+        pass
 
     def setLabel(self, label):
         """Set's text for this label.
@@ -890,24 +904,26 @@ class ControlLabel(Control):
 
 #noinspection PyUnusedLocal
 class ControlFadeLabel(Control):
-    """Control that scroll's lables.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    font: string - font used for label text. (e.g. 'font13')
-    textColor: hexstring - color of fadelabel's labels. (e.g. '0xFFFFFFFF')
-    alignment: integer - alignment of label - *Note, see xbfont.h
+    """Control which scrolls long label text."""
 
-    Note:
-        After you create the control, you need to add it to the window with addControl().
+    def __init__(self, x, y, width, height, font=None, textColor=None, alignment=None):
+        """
+         x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        font: string - font used for label text. (e.g. 'font13')
+        textColor: hexstring - color of fadelabel's labels. (e.g. '0xFFFFFFFF')
+        alignment: integer - alignment of label - *Note, see xbfont.h
 
-    Example:
-    self.fadelabel = xbmcgui.ControlFadeLabel(100, 250, 200, 50, textColor='0xFFFFFFFF')
-    """
-    def __new__(cls, x, y, width, height, font=None, textColor=None, alignment=None):
-        return super(ControlFadeLabel, cls).__init__(cls)
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+        self.fadelabel = xbmcgui.ControlFadeLabel(100, 250, 200, 50, textColor='0xFFFFFFFF')
+        """
+        pass
 
     def addLabel(self, label):
         """Add a label to this control for scrolling.
@@ -923,23 +939,28 @@ class ControlFadeLabel(Control):
 
 #noinspection PyUnusedLocal
 class ControlTextBox(Control):
-    """ControlTextBox class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    font: string - font used for text. (e.g. 'font13')
-    textColor: hexstring - color of textbox's text. (e.g. '0xFFFFFFFF')
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.textbox = xbmcgui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
     """
-    def __new__(cls, x, y, width, height, font=None, textColor=None):
-        return super(ControlTextBox, cls).__init__(cls)
+    ControlTextBox class.
+    Creates a box for multi-line text.
+    """
+
+    def __init__(self, x, y, width, height, font=None, textColor=None):
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        font: string - font used for text. (e.g. 'font13')
+        textColor: hexstring - color of textbox's text. (e.g. '0xFFFFFFFF')
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.textbox = xbmcgui.ControlTextBox(100, 250, 300, 300, textColor='0xFFFFFFFF')
+        """
+        pass
 
     def setText(self, text):
         """Set's the text for this textbox.
@@ -962,35 +983,40 @@ class ControlTextBox(Control):
 
 #noinspection PyUnusedLocal
 class ControlButton(Control):
-    """ControlButton class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    label: string or unicode - text string.
-    focusTexture: string - filename for focus texture.
-    noFocusTexture: string - filename for no focus texture.
-    textOffsetX: integer - x offset of label.
-    textOffsetY: integer - y offset of label.
-    alignment: integer - alignment of label - *Note, see xbfont.h
-    font: string - font used for label text. (e.g. 'font13')
-    textColor: hexstring - color of enabled button's label. (e.g. '0xFFFFFFFF')
-    disabledColor: hexstring - color of disabled button's label. (e.g. '0xFFFF3300')
-    angle: integer - angle of control. (+ rotates CCW, - rotates CW)
-    shadowColor: hexstring - color of button's label's shadow. (e.g. '0xFF000000')
-    focusedColor: hexstring - color of focused button's label. (e.g. '0xFF00FFFF')
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.button = xbmcgui.ControlButton(100, 250, 200, 50, 'Status', font='font14')
     """
-    def __new__(cls, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
+    ControlButton class.
+    Creates a clickable button.
+    """
+
+    def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
                  shadowColor=None, focusedColor=None):
-        return super(ControlButton, cls).__init__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        label: string or unicode - text string.
+        focusTexture: string - filename for focus texture.
+        noFocusTexture: string - filename for no focus texture.
+        textOffsetX: integer - x offset of label.
+        textOffsetY: integer - y offset of label.
+        alignment: integer - alignment of label - *Note, see xbfont.h
+        font: string - font used for label text. (e.g. 'font13')
+        textColor: hexstring - color of enabled button's label. (e.g. '0xFFFFFFFF')
+        disabledColor: hexstring - color of disabled button's label. (e.g. '0xFFFF3300')
+        angle: integer - angle of control. (+ rotates CCW, - rotates CW)
+        shadowColor: hexstring - color of button's label's shadow. (e.g. '0xFF000000')
+        focusedColor: hexstring - color of focused button's label. (e.g. '0xFF00FFFF')
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.button = xbmcgui.ControlButton(100, 250, 200, 50, 'Status', font='font14')
+        """
+        pass
 
     def setDisabledColor(self, disabledColor):
         """Set's this buttons disabled color.
@@ -1026,32 +1052,37 @@ class ControlButton(Control):
 
 #noinspection PyUnusedLocal
 class ControlCheckMark(Control):
-    """ControlCheckMark class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    label: string or unicode - text string.
-
-    focusTexture: string - filename for focus texture.
-    noFocusTexture: string - filename for no focus texture.
-    checkWidth: integer - width of checkmark.
-    checkHeight: integer - height of checkmark.
-    _alignment: integer - alignment of label - *Note, see xbfont.h
-    font: string - font used for label text. (e.g. 'font13')
-    textColor: hexstring - color of enabled checkmark's label. (e.g. '0xFFFFFFFF')
-    disabledColor: hexstring - color of disabled checkmark's label. (e.g. '0xFFFF3300')
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.checkmark = xbmcgui.ControlCheckMark(100, 250, 200, 50, 'Status', font='font14')
     """
-    def __new__(cls, x, y, width, height, label, focusTexture=None, noFocusTexture=None, checkWidth=None,
+    ControlCheckMark class.
+    Creates a checkmark with 2 states.
+    """
+
+    def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, checkWidth=None,
                  checkHeight=None, _alignment=None, font=None, textColor=None, disabledColor=None):
-        return super(ControlCheckMark, cls).__new__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        label: string or unicode - text string.
+
+        focusTexture: string - filename for focus texture.
+        noFocusTexture: string - filename for no focus texture.
+        checkWidth: integer - width of checkmark.
+        checkHeight: integer - height of checkmark.
+        _alignment: integer - alignment of label - *Note, see xbfont.h
+        font: string - font used for label text. (e.g. 'font13')
+        textColor: hexstring - color of enabled checkmark's label. (e.g. '0xFFFFFFFF')
+        disabledColor: hexstring - color of disabled checkmark's label. (e.g. '0xFFFF3300')
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.checkmark = xbmcgui.ControlCheckMark(100, 250, 200, 50, 'Status', font='font14')
+        """
+        pass
 
     def setDisabledColor(self, disabledColor):
         """Set's this controls disabled color.
@@ -1087,35 +1118,40 @@ class ControlCheckMark(Control):
 
 #noinspection PyUnusedLocal
 class ControlList(Control):
-    """ControlList class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    font: string - font used for items label. (e.g. 'font13')
-    textColor: hexstring - color of items label. (e.g. '0xFFFFFFFF')
-    buttonTexture: string - filename for no focus texture.
-    buttonFocusTexture: string - filename for focus texture.
-    selectedColor: integer - x offset of label.
-    _imageWidth: integer - width of items icon or thumbnail.
-    _imageHeight: integer - height of items icon or thumbnail.
-    _itemTextXOffset: integer - x offset of items label.
-    _itemTextYOffset: integer - y offset of items label.
-    _itemHeight: integer - height of items.
-    _space: integer - space between items.
-    _alignmentY: integer - Y-axis alignment of items label - *Note, see xbfont.h
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.cList = xbmcgui.ControlList(100, 250, 200, 250, 'font14', space=5)
     """
-    def __new__(cls, x, y, width, height, font=None, textColor=None, buttonTexture=None, buttonFocusTexture=None,
+    ControlList class.
+    Creates a list of items.
+    """
+
+    def __init__(self, x, y, width, height, font=None, textColor=None, buttonTexture=None, buttonFocusTexture=None,
                  selectedColor=None, _imageWidth=None, _imageHeight=None, _itemTextXOffset=None, _itemTextYOffset=None,
                  _itemHeight=None, _space=None, _alignmentY=None):
-        return super(ControlList, cls).__new__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        font: string - font used for items label. (e.g. 'font13')
+        textColor: hexstring - color of items label. (e.g. '0xFFFFFFFF')
+        buttonTexture: string - filename for no focus texture.
+        buttonFocusTexture: string - filename for focus texture.
+        selectedColor: integer - x offset of label.
+        _imageWidth: integer - width of items icon or thumbnail.
+        _imageHeight: integer - height of items icon or thumbnail.
+        _itemTextXOffset: integer - x offset of items label.
+        _itemTextYOffset: integer - y offset of items label.
+        _itemHeight: integer - height of items.
+        _space: integer - space between items.
+        _alignmentY: integer - Y-axis alignment of items label - *Note, see xbfont.h
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.cList = xbmcgui.ControlList(100, 250, 200, 250, 'font14', space=5)
+        """
+        pass
 
     def addItem(self, item):
         """Add a new item to this list control.
@@ -1239,25 +1275,30 @@ class ControlList(Control):
 
 #noinspection PyUnusedLocal
 class ControlImage(Control):
-    """ControlImage class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    filename: string - image filename.
-    colorKey: hexString - (example, '0xFFFF3300')
-    aspectRatio: integer - (values 0 = stretch (default), 1 = scale up (crops), 2 = scale down (black bars)
-    colorDiffuse: hexString - (example, '0xC0FF0000' (red tint)).
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.image = xbmcgui.ControlImage(100, 250, 125, 75, aspectRatio=2)
     """
-    def __new__(cls, x, y, width, height, filename, colorKey=None, aspectRatio=None, colorDiffuse=None):
-        return super(ControlImage, cls).__new__(cls)
+    ControlImage class.
+    Displays an image from a file.
+    """
+
+    def __init__(self, x, y, width, height, filename, colorKey=None, aspectRatio=None, colorDiffuse=None):
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        filename: string - image filename.
+        colorKey: hexString - (example, '0xFFFF3300')
+        aspectRatio: integer - (values 0 = stretch (default), 1 = scale up (crops), 2 = scale down (black bars)
+        colorDiffuse: hexString - (example, '0xC0FF0000' (red tint)).
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.image = xbmcgui.ControlImage(100, 250, 125, 75, aspectRatio=2)
+        """
+        pass
 
     def setImage(self, filename):
         """Changes the image.
@@ -1276,27 +1317,31 @@ class ControlImage(Control):
 
 #noinspection PyUnusedLocal
 class ControlProgress(Control):
-    """ControlProgress class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    texturebg: string - image filename.
-    textureleft: string - image filename.
-    texturemid: string - image filename.
-    textureright: string - image filename.
-    textureoverlay: string - image filename.
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.progress = xbmcgui.ControlProgress(100, 250, 125, 75)
     """
-    def __init__(cls, x, y, width, height, texturebg=None, textureleft=None, texturemid=None, textureright=None,
+    ControlProgress class.
+    """
+
+    def __init__(self, x, y, width, height, texturebg=None, textureleft=None, texturemid=None, textureright=None,
                  textureoverlay=None):
-        return super(ControlProgress, cls).__new__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        texturebg: string - image filename.
+        textureleft: string - image filename.
+        texturemid: string - image filename.
+        textureright: string - image filename.
+        textureoverlay: string - image filename.
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.progress = xbmcgui.ControlProgress(100, 250, 125, 75)
+        """
+        pass
 
     def setPercent(self, percent):
         """Sets the percentage of the progressbar to show.
@@ -1315,24 +1360,29 @@ class ControlProgress(Control):
 
 #noinspection PyUnusedLocal
 class ControlSlider(Control):
-    """ControlSlider class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    textureback: string - image filename.
-    texture: string - image filename.
-    texturefocus: string - image filename.
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.slider = xbmcgui.ControlSlider(100, 250, 350, 40)
     """
-    def __new__(cls, x, y, width, height, textureback=None, texture=None, texturefocus=None):
-        return super(ControlSlider, cls).__new__(cls)
+    ControlSlider class.
+    Creates a slider.
+    """
+
+    def __init__(self, x, y, width, height, textureback=None, texture=None, texturefocus=None):
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        textureback: string - image filename.
+        texture: string - image filename.
+        texturefocus: string - image filename.
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.slider = xbmcgui.ControlSlider(100, 250, 350, 40)
+        """
+        pass
 
     def getPercent(self):
         """Returns a float of the percent of the slider."""
@@ -1345,50 +1395,54 @@ class ControlSlider(Control):
 
 #noinspection PyUnusedLocal
 class ControlGroup(Control):
-    """ControlGroup class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
+    """ControlGroup class."""
 
-    Example:
-    self.group = xbmcgui.ControlGroup(100, 250, 125, 75)
-    """
-    def __new__(cls):
-        return super(ControlGroup, cls).__new__(cls)
+    def __init__(self, x, y, width, height):
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+
+        Example:
+        self.group = xbmcgui.ControlGroup(100, 250, 125, 75)
+        """
+        pass
 
 #noinspection PyUnusedLocal
 class ControlEdit(Control):
-    """
-   	ControlEdit class.
 
+    """
+    ControlEdit class.
     ControlEdit(x, y, width, height, label[, font, textColor,
                                                     disabledColor, alignment, focusTexture, noFocusTexture])
-
-    x              : integer - x coordinate of control.
-    y              : integer - y coordinate of control.
-    width          : integer - width of control.
-    height         : integer - height of control.
-    label          : string or unicode - text string.
-    font           : [opt] string - font used for label text. (e.g. 'font13')
-    textColor      : [opt] hexstring - color of enabled label's label. (e.g. '0xFFFFFFFF')
-    disabledColor  : [opt] hexstring - color of disabled label's label. (e.g. '0xFFFF3300')
-    _alignment      : [opt] integer - alignment of label - *Note, see xbfont.h
-    focusTexture   : [opt] string - filename for focus texture.
-    noFocusTexture : [opt] string - filename for no focus texture.
-    isPassword     : [opt] bool - if true, mask text value.
-
-    *Note, You can use the above as keywords for arguments and skip certain optional arguments.
-    Once you use a keyword, all following arguments require the keyword.
-    After you create the control, you need to add it to the window with addControl().
-
-    example:
-    - self.edit = xbmcgui.ControlEdit(100, 250, 125, 75, 'Status')
     """
-    def __new__(cls, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
+
+    def __init__(self, x, y, width, height, label, font=None, textColor=None, disabledColor=None, alignment=None,
                                                                             focusTexture=None, noFocusTexture=None):
-        return super(ControlEdit, cls).__new__(cls)
+        """
+        x              : integer - x coordinate of control.
+        y              : integer - y coordinate of control.
+        width          : integer - width of control.
+        height         : integer - height of control.
+        label          : string or unicode - text string.
+        font           : [opt] string - font used for label text. (e.g. 'font13')
+        textColor      : [opt] hexstring - color of enabled label's label. (e.g. '0xFFFFFFFF')
+        disabledColor  : [opt] hexstring - color of disabled label's label. (e.g. '0xFFFF3300')
+        _alignment      : [opt] integer - alignment of label - *Note, see xbfont.h
+        focusTexture   : [opt] string - filename for focus texture.
+        noFocusTexture : [opt] string - filename for no focus texture.
+        isPassword     : [opt] bool - if true, mask text value.
+
+        *Note, You can use the above as keywords for arguments and skip certain optional arguments.
+        Once you use a keyword, all following arguments require the keyword.
+        After you create the control, you need to add it to the window with addControl().
+
+        example:
+        - self.edit = xbmcgui.ControlEdit(100, 250, 125, 75, 'Status')
+        """
+        pass
 
     def getLabel(self):
         """
@@ -1431,37 +1485,42 @@ class ControlEdit(Control):
 
 #noinspection PyUnusedLocal
 class ControlRadioButton(Control):
-    """ControlRadioButton class.
 
-    x: integer - x coordinate of control.
-    y: integer - y coordinate of control.
-    width: integer - width of control.
-    height: integer - height of control.
-    label: string or unicode - text string.
-    focusTexture: string - filename for focus texture.
-    noFocusTexture: string - filename for no focus texture.
-    textOffsetX: integer - x offset of label.
-    textOffsetY: integer - y offset of label.
-    _alignment: integer - alignment of label - *Note, see xbfont.h
-    font: string - font used for label text. (e.g. 'font13')
-    textColor: hexstring - color of enabled radio button's label. (e.g. '0xFFFFFFFF')
-    disabledColor: hexstring - color of disabled radio button's label. (e.g. '0xFFFF3300')
-    angle: integer - angle of control. (+ rotates CCW, - rotates CW)
-    shadowColor: hexstring - color of radio button's label's shadow. (e.g. '0xFF000000')
-    focusedColor: hexstring - color of focused radio button's label. (e.g. '0xFF00FFFF')
-    TextureRadioFocu: string - filename for radio focus texture.
-    TextureRadioNoFocus: string - filename for radio no focus texture.
-
-    Note:
-        After you create the control, you need to add it to the window with addControl().
-
-    Example:
-        self.radiobutton = xbmcgui.ControlRadioButton(100, 250, 200, 50, 'Status', font='font14')
     """
-    def __new__(cls, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
+    ControlRadioButton class.
+    Creates a radio-button with 2 states.
+    """
+
+    def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, _alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
                  shadowColor=None, focusedColor=None, TextureRadioFocus=None, TextureRadioNoFocus=None):
-        return super(ControlRadioButton, cls).__new__(cls)
+        """
+        x: integer - x coordinate of control.
+        y: integer - y coordinate of control.
+        width: integer - width of control.
+        height: integer - height of control.
+        label: string or unicode - text string.
+        focusTexture: string - filename for focus texture.
+        noFocusTexture: string - filename for no focus texture.
+        textOffsetX: integer - x offset of label.
+        textOffsetY: integer - y offset of label.
+        _alignment: integer - alignment of label - *Note, see xbfont.h
+        font: string - font used for label text. (e.g. 'font13')
+        textColor: hexstring - color of enabled radio button's label. (e.g. '0xFFFFFFFF')
+        disabledColor: hexstring - color of disabled radio button's label. (e.g. '0xFFFF3300')
+        angle: integer - angle of control. (+ rotates CCW, - rotates CW)
+        shadowColor: hexstring - color of radio button's label's shadow. (e.g. '0xFF000000')
+        focusedColor: hexstring - color of focused radio button's label. (e.g. '0xFF00FFFF')
+        TextureRadioFocu: string - filename for radio focus texture.
+        TextureRadioNoFocus: string - filename for radio no focus texture.
+
+        Note:
+            After you create the control, you need to add it to the window with addControl().
+
+        Example:
+            self.radiobutton = xbmcgui.ControlRadioButton(100, 250, 200, 50, 'Status', font='font14')
+        """
+        pass
 
     def setSelected(self, selected):
         """Sets the radio buttons's selected status.

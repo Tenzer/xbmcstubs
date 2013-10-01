@@ -759,7 +759,7 @@ def executebuiltin(function):
     """
     executebuiltin(function)--Execute a built in XBMC function.
     function : string - builtin function to execute.
-    List of functions -http://wiki.xbmc.org/?title=List_of_Built_In_Functions
+    List of functions - http://wiki.xbmc.org/?title=List_of_Built_In_Functions
     example:
      - xbmc.executebuiltin('XBMC.RunXBE(c:\avalaunch.xbe)')
     """
