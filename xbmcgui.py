@@ -687,6 +687,33 @@ class ListItem(object):
         """
         pass
 
+    def addStreamInfo(type, values):
+        """
+        addStreamInfo(type, values) -- Add a stream with details.
+
+        type              : string - type of stream(video/audio/subtitle).
+        values            : dictionary - pairs of { label: value }.
+
+        Video Values:
+        codec         : string (h264)
+        aspect        : float (1.78)
+        width         : integer (1280)
+        height        : integer (720)
+        duration      : integer (seconds)
+
+        Audio Values:
+        codec         : string (dts)
+        language      : string (en)
+        channels      : integer (2)
+
+        Subtitle Values:
+        language      : string (en)
+
+        example:
+        - self.list.getSelectedItem().addStreamInfo('video', { 'Codec': 'h264', 'Width' : 1280 })
+        """
+        pass
+
     def getLabel(self):
         """Returns the listitem label."""
         return str
@@ -852,9 +879,13 @@ class ListItem(object):
         pass
 
     def setPath(self, path):
-        """Sets the listitem's path.
+        """
+        setPath(path) -- Sets the listitem's path.
+        path           : string or unicode - path, activated when item is clicked.
+        *Note, You can use the above as keywords for arguments.
 
-        path: string or unicode - path, activated when item is clicked.
+        example:
+        - self.list.getSelectedItem().setPath(path='ActivateWindow(Weather)')
         """
         pass
 
