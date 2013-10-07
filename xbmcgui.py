@@ -938,7 +938,7 @@ class ControlFadeLabel(Control):
 
     """Control which scrolls long label text."""
 
-    def __init__(self, x, y, width, height, font=None, textColor=None, alignment=None):
+    def __init__(self, x, y, width, height, font=None, textColor=None, _alignment=None):
         """
          x: integer - x coordinate of control.
         y: integer - y coordinate of control.
@@ -946,7 +946,7 @@ class ControlFadeLabel(Control):
         height: integer - height of control.
         font: string - font used for label text. (e.g. 'font13')
         textColor: hexstring - color of fadelabel's labels. (e.g. '0xFFFFFFFF')
-        alignment: integer - alignment of label - *Note, see xbfont.h
+        _alignment: integer - alignment of label - *Note, see xbfont.h
 
         Note:
             After you create the control, you need to add it to the window with addControl().
