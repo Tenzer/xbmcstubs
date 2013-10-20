@@ -1254,7 +1254,7 @@ class ControlList(Control):
         Note:
             Returns -1 for empty lists.
         """
-        return long
+        return int
 
     def getSelectedItem(self):
         """Returns the selected item as a ListItem object.
