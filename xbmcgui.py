@@ -1715,7 +1715,10 @@ class Dialog(object):
         *Note, Returns the entered data as a string.
         Returns an empty string if dialog was canceled.
 
-        example:
+        Note:
+            available since Gotham
+
+        Example:
         - dialog = xbmcgui.Dialog()
         - d = dialog.input('Enter secret code', type=xbmcgui.INPUT_ALPHANUM, option=xbmcgui.ALPHANUM_HIDE_INPUT)
         """
