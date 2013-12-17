@@ -1524,7 +1524,8 @@ class ControlRadioButton(Control):
 
     def __init__(self, x, y, width, height, label, focusTexture=None, noFocusTexture=None, textOffsetX=None,
                  textOffsetY=None, _alignment=None, font=None, textColor=None, disabledColor=None, angle=None,
-                 shadowColor=None, focusedColor=None, TextureRadioFocus=None, TextureRadioNoFocus=None):
+                 shadowColor=None, focusedColor=None, focusOnTexture=None, noFocusOnTexture=None,
+                 focusOffTexture=None, noFocusOffTexture=None):
         """
         x: integer - x coordinate of control.
         y: integer - y coordinate of control.
@@ -1542,8 +1543,12 @@ class ControlRadioButton(Control):
         angle: integer - angle of control. (+ rotates CCW, - rotates CW)
         shadowColor: hexstring - color of radio button's label's shadow. (e.g. '0xFF000000')
         focusedColor: hexstring - color of focused radio button's label. (e.g. '0xFF00FFFF')
-        TextureRadioFocu: string - filename for radio focus texture.
-        TextureRadioNoFocus: string - filename for radio no focus texture.
+        focusOnTexture: string - filename for radio focused/checked texture.
+        noFocusOnTexture: string - filename for radio not focused/checked texture.
+        focusOffTexture: string - filename for radio focused/unchecked texture.
+        noFocusOffTexture: string - filename for radio not focused/unchecked texture.
+        Note: To customize RadioButton all 4 abovementioned textures need to be provided.
+        focus and noFocus textures can be the same.
 
         Note:
             After you create the control, you need to add it to the window with addControl().
