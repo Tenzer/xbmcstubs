@@ -796,7 +796,7 @@ class ListItem(object):
             plotoutline: string (Short Description)
             title: string (Big Fan)
             originaltitle: string (Big Fan)
-            duration: string (3:18)
+            duration: string - duration in minutes (95)
             studio: string (Warner Bros.)
             tagline: string (An awesome movie) - short description of movie
             writer: string (Robert D. Siegel)

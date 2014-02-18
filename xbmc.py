@@ -138,11 +138,12 @@ class Player(object):
 
     def play(self, item=None, listitem=None, windowed=False):
         """
-        play([item, listitem, windowed]) -- Play this item.
+        play([item, listitem, windowed, startpos]) -- Play this item.
 
-        item           : [opt] string - filename, url or playlist.
-        listitem       : [opt] listitem - used with setInfo() to set different infolabels.
-        windowed       : [opt] bool - true=play video windowed, false=play users preference.(default)
+        item : [opt] string - filename, url or playlist.
+        listitem : [opt] listitem - used with setInfo() to set different infolabels.
+        windowed : [opt] bool - true=play video windowed, false=play users preference.(default)
+        startpos : [opt] int - starting position when playing a playlist. Default = -1
 
         *Note, If item is not given then the Player will try to play the current item
         in the current playlist.
@@ -153,7 +154,8 @@ class Player(object):
         example:
         - listitem = xbmcgui.ListItem('Ironman')
         - listitem.setInfo('video', {'Title': 'Ironman', 'Genre': 'Science Fiction'})
-        - xbmc.Player( xbmc.PLAYER_CORE_MPLAYER ).play(url, listitem, windowed)
+        - xbmc.Player().play(url, listitem, windowed)
+        - xbmc.Player().play(playlist, listitem, windowed, startpos)
         """
         pass
 
