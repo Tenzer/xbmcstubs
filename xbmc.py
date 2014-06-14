@@ -136,7 +136,7 @@ class Player(object):
         """
         pass
 
-    def play(self, item=None, listitem=None, windowed=False):
+    def play(self, item=None, listitem=None, windowed=False, statrpos=-1):
         """
         play([item, listitem, windowed, startpos]) -- Play this item.
 
@@ -981,21 +981,25 @@ def makeLegalFilename(filename, fatX):
 
     *Note, If fatX is true you should pass a full path. If fatX is false only pass the basename of the path.
 
-    You can use the above as keywords for arguments and skip certain optional arguments. Once you use a keyword, all following arguments require the keyword.
+    You can use the above as keywords for arguments and skip certain optional arguments.
+    Once you use a keyword, all following arguments require the keyword.
 
     example:
     - filename = xbmc.makeLegalFilename('F: Age: The Meltdown.avi')
     """
     return str
 
-def playSFX(filename):
+def playSFX(filename, useCached=False):
     """
-    playSFX(filename)--Plays a wav file by filename
+    playSFX(filename,[useCached])--Plays a wav file by filename
 
     filename : string - filename of the wav file to play.
+    useCached : [opt] bool - False = Dump any previously cached wav associated with filename
 
     example:
     - xbmc.playSFX('special://xbmc/scripts/dingdong.wav')
+
+    - xbmc.playSFX('special://xbmc/scripts/dingdong.wav',False)
     """
     pass
 
