@@ -1003,6 +1003,14 @@ def playSFX(filename, useCached=False):
     """
     pass
 
+def stopSFX():
+    """
+    stopSFX() -- Stops wav file
+
+    example:
+    - xbmc.stopSFX()
+    """"
+
 def restart():
     """
     restart()--Restart the htpc. example:
