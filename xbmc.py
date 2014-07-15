@@ -1009,7 +1009,7 @@ def stopSFX():
 
     example:
     - xbmc.stopSFX()
-    """"
+    """
 
 def restart():
     """
