@@ -657,7 +657,7 @@ class RenderCapture(object):
 
     def getAspectRatio(self):
         """
-        getAspectRatio() --returns aspect ratio of currently displayed video as float number.
+        getAspectRatio() --returns aspect ratio of currently displayed video as a float number.
         """
         return float
 
