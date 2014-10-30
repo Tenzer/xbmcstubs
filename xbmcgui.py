@@ -58,7 +58,7 @@ class Window(object):
         """
         pass
 
-    def onDoubleClick():
+    def onDoubleClick(self):
         pass
 
     def onControl(self, control):
