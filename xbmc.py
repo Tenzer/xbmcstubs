@@ -584,18 +584,22 @@ class Monitor(object):
     """
     def onAbortRequested(self):
         """
-        onAbortRequested() -- onAbortRequested method.
+        Deprecated!
+        """
+        pass
+
+    def waitForAbort(self):
+        """
+        waitForAbort() -- onAbortRequested method.
         Will be called when XBMC requests Abort
         """
         pass
 
     def onDatabaseUpdated(self, database):
         """
-        onDatabaseUpdated(database) -- onDatabaseUpdated method.
-        database - video/music as string
-        Will be called when database gets updated and return video or music to indicate which DB has been changed
+        Deprecated!
         """
-        pass
+        return str
 
     def onScreensaverActivated(self):
         """
@@ -620,11 +624,7 @@ class Monitor(object):
 
     def onDatabaseScanStarted(self, database):
         """
-        onDatabaseScanStarted(database)--onDatabaseScanStarted method.
-
-        database : video/music as string
-
-        Will be called when database update starts and return video or music to indicate which DB is being updated
+        Deprecated!
         """
         return str
 
@@ -639,6 +639,66 @@ class Monitor(object):
         Will be called when XBMC receives or sends a notification
         """
         pass
+
+    def onCleanStarted(self, library=''):
+        """
+        onCleanStarted(library)--onCleanStarted method.
+
+        library : video/music as string
+
+        Will be called when library clean has started
+        and return video or music to indicate which library is being cleaned
+        """
+        return str
+
+    def onCleanFinished(self, library=''):
+        """
+        onCleanFinished(library)--onCleanFinished method.
+
+        library : video/music as string
+
+        Will be called when library clean has ended
+        and return video or music to indicate which library has been cleaned
+        """
+        return str
+
+    def onDPMSActivated(self):
+        """
+        onDPMSActivated() --onDPMSActivated method.
+
+        Will be called when energysaving/DPMS gets active
+        """
+        pass
+
+    def onDPMSDeactivated(self):
+        """
+        onDPMSDeactivated() --onDPMSDeactivated method.
+
+        Will be called when energysaving/DPMS is turned off
+        """
+        pass
+
+    def onScanFinished(self, library=''):
+        """
+        onScanFinished(library)--onScanFinished method.
+
+        library : video/music as string
+
+        Will be called when library scan has ended
+        and return video or music to indicate which library has been scanned
+        """
+        return str
+
+    def onScanStarted(self, library=''):
+        """
+        onScanStarted(library)--onScanStarted method.
+
+        library : video/music as string
+
+        Will be called when library scan has started
+        and return video or music to indicate which library is being scanned
+        """
+        return str
 
 #noinspection PyUnusedLocal
 class RenderCapture(object):

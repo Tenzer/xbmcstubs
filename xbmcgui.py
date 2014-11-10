@@ -889,6 +889,15 @@ class ListItem(object):
         """
         pass
 
+    def setSubtitles(self, subtitles=[]):
+        """
+        setSubtitles() --Sets subtitles for this listitem.
+
+        example:
+        - listitem.setSubtitles(['special://temp/example.srt', 'http://example.com/example.srt' ])
+        """
+        pass
+
 
 #noinspection PyUnusedLocal
 class ControlLabel(Control):
