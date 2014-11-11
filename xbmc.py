@@ -599,7 +599,7 @@ class Monitor(object):
         """
         Deprecated!
         """
-        return str
+        pass
 
     def onScreensaverActivated(self):
         """
