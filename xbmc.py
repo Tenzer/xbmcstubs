@@ -626,7 +626,7 @@ class Monitor(object):
         """
         Deprecated!
         """
-        return str
+        pass
 
     def onNotification(self, sender, method, data):
         """
@@ -649,7 +649,7 @@ class Monitor(object):
         Will be called when library clean has started
         and return video or music to indicate which library is being cleaned
         """
-        return str
+        pass
 
     def onCleanFinished(self, library=''):
         """
@@ -660,7 +660,7 @@ class Monitor(object):
         Will be called when library clean has ended
         and return video or music to indicate which library has been cleaned
         """
-        return str
+        pass
 
     def onDPMSActivated(self):
         """
@@ -687,7 +687,7 @@ class Monitor(object):
         Will be called when library scan has ended
         and return video or music to indicate which library has been scanned
         """
-        return str
+        pass
 
     def onScanStarted(self, library=''):
         """
@@ -698,7 +698,7 @@ class Monitor(object):
         Will be called when library scan has started
         and return video or music to indicate which library is being scanned
         """
-        return str
+        pass
 
 #noinspection PyUnusedLocal
 class RenderCapture(object):
