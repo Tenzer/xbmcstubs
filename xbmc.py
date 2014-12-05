@@ -700,6 +700,18 @@ class Monitor(object):
         """
         pass
 
+    def waitForAbort(self, timeout):
+        """
+        waitForAbort([timeout]) -- Block until abort is requested, or until timeout occurs. If an
+        abort requested have already been made, return immediately.
+        Returns True when abort have been requested, False if a timeout is given and the operation times out.
+
+        :param timeout: float - (optional) timeout in seconds. Default: no timeout.
+        :return: bool
+        """
+        return bool
+
+
 #noinspection PyUnusedLocal
 class RenderCapture(object):
 
