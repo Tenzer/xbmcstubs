@@ -687,7 +687,7 @@ class ListItem(object):
         """
         pass
 
-    def addStreamInfo(type, values):
+    def addStreamInfo(self, type, values):
         """
         addStreamInfo(type, values) -- Add a stream with details.
 
@@ -895,6 +895,26 @@ class ListItem(object):
 
         example:
         - listitem.setSubtitles(['special://temp/example.srt', 'http://example.com/example.srt' ])
+        """
+        pass
+
+    def setArt(self, values={}):
+        """
+        setArt(values) -- Sets the listitem's art
+
+        values : dictionary - pairs of { label: value }.\n
+
+        - Some default art values (any string possible):
+        - thumb : string - image filename
+        - poster : string - image filename
+        - banner : string - image filename
+        - fanart : string - image filename
+        - clearart : string - image filename
+        - clearlogo : string - image filename
+        - landscape : string - image filename
+
+        example:
+        - self.list.getSelectedItem().setArt({ 'poster': 'poster.png', 'banner' : 'banner.png' })
         """
         pass
 
